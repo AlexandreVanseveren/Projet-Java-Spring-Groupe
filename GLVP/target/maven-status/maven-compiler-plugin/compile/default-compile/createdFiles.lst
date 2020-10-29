@@ -1,0 +1,12 @@
+be\ifosup\glvp\entities\User.class
+be\ifosup\glvp\config\WebSecurityConfig.class
+be\ifosup\glvp\controller\LoginController.class
+be\ifosup\glvp\config\CustomAuthentificationSuccessHandler.class
+be\ifosup\glvp\repositories\UserRepository.class
+be\ifosup\glvp\controller\user\UserController.class
+be\ifosup\glvp\controller\admin\AdminController.class
+be\ifosup\glvp\GlvpApplication.class
+be\ifosup\glvp\utils\BCryptManagerUtil.class
+db\migration\V1_0_1__AddUsers.class
+be\ifosup\glvp\constants\RoleEnum.class
+be\ifosup\glvp\services\impl\UsersDetailsServiceImpl.class
