@@ -27,3 +27,4 @@ public class V1_0_1__AddUsers extends BaseJavaMigration {
         statement.execute("INSERT INTO roles (id_user, `role`) values (2, 'USER')");
     }
 }
+
