@@ -68,20 +68,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**", "/user/**").authenticated()
+                .antMatchers("/admin/**", "/user/**", "/ws/**").authenticated() //Ajout du /ws/** pour accepter les webservices
                 .antMatchers("/admin/**").hasAuthority(ADMIN_ROLE)
                 .antMatchers("/user/**").hasAuthority(USER_ROLE)
                 .antMatchers("/*").permitAll()
-            .and()
+                .and()
                 .formLogin().loginPage("/login").successHandler(authenticationSuccessHandler).failureUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
-            .and()
+                .and()
                 .logout().invalidateHttpSession(true)
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
-            .and()
+                .and()
                 .csrf()
-            .and()
+                .and()
                 .sessionManagement().maximumSessions(1).expiredUrl("/login");
 
     }

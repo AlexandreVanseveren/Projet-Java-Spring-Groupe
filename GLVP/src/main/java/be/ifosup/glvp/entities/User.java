@@ -43,6 +43,10 @@ public class User implements UserDetails {
     @Column(name = "firstname", nullable = false)
     private String firstname;
 
+//    @NotNull
+//    @Column(name = "id_rolefk", nullable = false)
+//    private Long rolefk;
+
     @ElementCollection(targetClass = RoleEnum.class, fetch = FetchType.EAGER)
     @Cascade(value = org.hibernate.annotations.CascadeType.REMOVE)
     @JoinTable(

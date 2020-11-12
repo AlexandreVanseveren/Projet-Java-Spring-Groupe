@@ -1,4 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: be.ifosup.glvp.GlvpApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.492 s - in be.ifosup.glvp.GlvpApplicationTests
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.625 s <<< FAILURE! - in be.ifosup.glvp.GlvpApplicationTests
+contextLoads  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: 
+Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: SQL State  : 42S22
+Error Code : 1054
+Message    : Champ 'id_role' inconnu dans field list
+
+Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: 
+SQL State  : 42S22
+Error Code : 1054
+Message    : Champ 'id_role' inconnu dans field list
+
+Caused by: java.sql.SQLSyntaxErrorException: Champ 'id_role' inconnu dans field list
+
