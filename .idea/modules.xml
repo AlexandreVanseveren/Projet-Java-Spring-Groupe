@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GLVP.iml" filepath="$PROJECT_DIR$/GLVP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/glvp.iml" filepath="$PROJECT_DIR$/glvp.iml" />
     </modules>
   </component>
 </project>
