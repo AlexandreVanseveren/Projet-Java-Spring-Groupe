@@ -7,7 +7,6 @@ import be.ifosup.glvp.forms.ProductForm;
 import java.util.List;
 import java.util.Set;
 
-//Objet créer en fonction du login
 public interface ProductService {
     ProductDTO getprodname(String prodname);
     Set<ProductDTO> getAll();

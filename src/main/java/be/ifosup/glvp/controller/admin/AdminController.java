@@ -52,13 +52,10 @@ public class AdminController {
 
     @GetMapping("/users/delete/{id}")
     public String DeleteUser(@PathVariable("id") int id) {
-
         // delete the user
         usersService.deleteById(id);
-
         // redirect to prevent duplicate submissions
         return "redirect:/admin/userlist";
-
     }
 
     @GetMapping
@@ -94,6 +91,14 @@ public class AdminController {
         // add to the spring model
         model.addAttribute("products", products);
         return "admin/product";
+    }
+
+    @GetMapping("/products/delete/{id}")
+    public String DeleteProduct(@PathVariable("id") int id) {
+        // delete the user
+        productService.deleteById(id);
+        // redirect to prevent duplicate submissions
+        return "redirect:/admin/productlist";
     }
 
 
