@@ -26,4 +26,6 @@ public class UserForm implements Serializable {
 
     private String password;
 
+    private  String role;
+
 }

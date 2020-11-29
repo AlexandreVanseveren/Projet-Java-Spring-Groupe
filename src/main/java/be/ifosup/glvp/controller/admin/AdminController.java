@@ -8,10 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 //Importation des services, modeles nécessaires pour les objets
@@ -33,7 +30,7 @@ public class AdminController {
         this.usersService = usersService;
     }
 
-    @GetMapping("/create")
+    @GetMapping("/users/create")
     public String SetStudent(Model model) {
         UserForm userForm = new UserForm();
         model.addAttribute("userform", userForm);
@@ -41,11 +38,21 @@ public class AdminController {
         return "admin/users";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/users/create")
     public String CreateStudent(@ModelAttribute("userform") UserForm userForm) {
         usersService.create(userForm);
+        return "redirect:/admin/userlist";
+    }
 
-        return "redirect:create";
+    @GetMapping("/users/delete/{id}")
+    public String DeleteUser(@PathVariable("id") int id) {
+
+        // delete the user
+        usersService.deleteById(id);
+
+        // redirect to prevent duplicate submissions
+        return "redirect:/admin/userlist";
+
     }
 
     @GetMapping
@@ -63,6 +70,9 @@ public class AdminController {
 
     @GetMapping("/userlist")
     public String listUsers(Model model) {
+
+        UserForm userForm1 = new UserForm();
+        model.addAttribute("userform", userForm1);
 
         // get users from db
         Set<UserDTO> users = usersService.getAll();
