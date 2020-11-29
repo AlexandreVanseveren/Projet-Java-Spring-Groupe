@@ -1,6 +1,9 @@
 package be.ifosup.glvp.controller.admin;
 
+import be.ifosup.glvp.forms.ProductForm;
 import be.ifosup.glvp.forms.UserForm;
+import be.ifosup.glvp.models.ProductDTO;
+import be.ifosup.glvp.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,11 +27,14 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class AdminController {
     private final UserService usersService;
+    private final ProductService productService;
 
     @Autowired
-    public AdminController(UserService usersService) {
+    public AdminController(UserService usersService, ProductService productService) {
         this.usersService = usersService;
+        this.productService = productService;
     }
+
 
     @GetMapping("/users/create")
     public String SetStudent(Model model) {
@@ -70,16 +76,25 @@ public class AdminController {
 
     @GetMapping("/userlist")
     public String listUsers(Model model) {
-
         UserForm userForm1 = new UserForm();
         model.addAttribute("userform", userForm1);
-
         // get users from db
         Set<UserDTO> users = usersService.getAll();
-
         // add to the spring model
         model.addAttribute("users", users);
-
         return "admin/users";
     }
+
+     @GetMapping("/productlist")
+    public String listProducts(Model model) {
+        ProductForm productForm1 = new ProductForm();
+        model.addAttribute("productform", productForm1);
+        // get users from db
+        Set<ProductDTO> products = productService.getAll();
+        // add to the spring model
+        model.addAttribute("products", products);
+        return "admin/product";
+    }
+
+
 }

@@ -106,7 +106,8 @@
                         <!--                        <a th:href="@{'/users/user/' + ${user.id}}"   class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>-->
                         <a th:href="@{'/admin/users/update/' + ${user.id}}" class="btn btn-sm btn-warning">Update User<i
                                 class="far fa-edit"></i></a>
-                        <a th:href="@{'/admin/users/delete/' + ${user.id}}" class="btn btn-sm btn-danger">Delete
+
+                        <a onclick="return confirm('Are you sure you want to delete ?') ;" th:href="@{'/admin/users/delete/' + ${user.id}}" class="btn btn-sm btn-danger">Delete
                             user<i class="far fa-trash-alt"></i></a>
                         <!--   onclick="confirmDelete([[${user.id}]],                      <th:block >-->
                         <!--                            <a th:href="@{'/users/activate/' + ${user.id}}" class="btn btn-sm btn-success"><i class="far fa-check-circle"></i></a>-->

@@ -1,6 +1,6 @@
 package be.ifosup.glvp.repositories;
 
-import be.ifosup.glvp.entities.User;
+import be.ifosup.glvp.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,13 +9,13 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
     /**
      * Définit une fonction qui permet de récupérer un utilisateur sur base du username
      *
-     * @param username
+     * @param product
      * @return
      */
-    User findByUsername(String username);
-    User findById(long id);
+    Product findByProduct(String product);
+    Product findById(long id);
 }

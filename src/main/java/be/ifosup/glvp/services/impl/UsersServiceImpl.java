@@ -2,10 +2,9 @@ package be.ifosup.glvp.services.impl;
 
 
 import be.ifosup.glvp.constants.RoleEnum;
-//import be.ifosup.glvp.entities.Role;
+
 import be.ifosup.glvp.forms.UserForm;
 import be.ifosup.glvp.helpers.ToModel;
-//import be.ifosup.glvp.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
@@ -29,9 +28,6 @@ public class UsersServiceImpl implements UserService {
     @Qualifier("userRepository")
     @Autowired
     private UserRepository userRepository;
-//    @Qualifier("roleRepository")
-//    @Autowired
-//    private RoleRepository roleRepository;
 
     @Autowired
     public UsersServiceImpl(
@@ -51,6 +47,10 @@ public class UsersServiceImpl implements UserService {
                 .firstname(userform.getFirstname())
                 .password(encodePassword)
                 .roles(roleEnums)
+                .enabled(true)
+                .accountNonExpired(true)
+                .accountNonLocked(true)
+                .credentialsNonExpired(true)
                 .build();
         User user = userRepository.save(entity);
         return ToModel.getUserFromEntity(user);
@@ -66,14 +66,6 @@ public class UsersServiceImpl implements UserService {
         }
     }
 
-//    @Override
-//    public void deleteById(long id) {
-//        User entity = userRepository.getOne(id);
-//        Role role = roleRepository.getOne(id));
-//        entity.getRoles().remove(role);
-//        userRepository.save(entity);
-//        userRepository.deleteById(id);
-//    }
 
     @Override
     public UserDTO getById(long id) {
@@ -104,17 +96,4 @@ public class UsersServiceImpl implements UserService {
         return ToModel.getUsersFromEntities(entities);
     }
 
-//    @Override
-//    public List<UserDTO> getAll() {
-//        List<User> entities = userRepository.findAll();
-//
-//        return entities.stream()
-//                .map(userEntity -> UserDTO
-//                        .builder()
-//                        .id(userEntity.getId())
-//                        .firstname(userEntity.getFirstname())
-//                        .lastname(userEntity.getLastname())
-//                        .build()
-//                ).collect(Collectors.toList());
-//    }
 }

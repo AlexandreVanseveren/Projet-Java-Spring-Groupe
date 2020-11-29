@@ -1,12 +1,18 @@
 package be.ifosup.glvp.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "products")
 @Data
 public class Product {
@@ -17,7 +23,7 @@ public class Product {
 
     @NotNull
     @Column(name = "prod_name", nullable = false)
-    private String prod_name;
+    private String product;  //Attention au nom de variable crée des erreurs
 
     @NotNull
     @Column(name = "rayon", nullable = false)
@@ -37,4 +43,14 @@ public class Product {
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "id_statfk")
     private Statut stat_name;
+
+    @NotNull
+    @Column(name = "price", nullable = false )
+    private Float price;
+
+    @NotNull
+    @Column(name = "quantities", nullable = false )
+    private Integer quantities;
+
+
 }

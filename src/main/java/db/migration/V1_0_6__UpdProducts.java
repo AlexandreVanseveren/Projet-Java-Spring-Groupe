@@ -11,7 +11,7 @@ public class V1_0_6__UpdProducts extends BaseJavaMigration {
 
         Statement statement = context.getConnection().createStatement();
         statement.execute(
-                "Alter Table products add price int (11)");
+                "Alter Table products add price float (11)");
         statement.execute(
                 "Alter Table products add quantities int (11)");
         statement.execute(

@@ -8,15 +8,20 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserForm implements Serializable {
+public class ProductForm implements Serializable {
 
-    private String lastname;
-    private String firstname;
-    private String username;
-    private String password;
-    private  String role;
+    private Long id;
+    private String productname;
+    private Date rayon;
+    private Date peremption;
+    private Long id_subfk;
+    private Long id_statfk;
+    private Float price;
+    private Integer quantities;
+
 }
