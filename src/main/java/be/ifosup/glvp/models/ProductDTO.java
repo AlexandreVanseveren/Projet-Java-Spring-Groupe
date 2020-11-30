@@ -1,5 +1,7 @@
 package be.ifosup.glvp.models;
 
+import be.ifosup.glvp.entities.Statut;
+import be.ifosup.glvp.entities.Subcat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,8 +20,8 @@ public class ProductDTO {
     private String productname;
     private Date rayon;
     private Date peremption;
-    private Long id_subfk;
-    private Long id_statfk;
+    private Subcat id_subfk;
+    private Statut id_statfk;
     private Float price;
     private Integer quantities;
 
