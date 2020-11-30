@@ -1,39 +1,89 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="static/header.html :: head">>
-    <meta charset="UTF-8">
-    <title>Admin</title>
+<head th:insert="static/header.html :: head">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body>
 <h1>Admin page</h1>
-<form th:action="@{/admin/create}" method="post" th:object="${userform}">
-    <div>
-        <label for="username">username</label>
-        <input type="text" name="username" id="username" th:field="*{username}"/>
-    </div>
-    <div>
-        <label for="password">password</label>
-        <input type="password" name="password" id="password" th:field="*{password}"/>
-    </div>
-    <div>
-        <label for="password">firstname</label>
-        <input type="text" name="firstname" id="firstname" th:field="*{firstname}"/>
-    </div>
-    <div>
-        <label for="password">lastname</label>
-        <input type="text" name="lastname" id="lastname" th:field="*{lastname}"/>
-    </div>
-    <div>
-        <button type="submit">RajoutUser</button>
-    </div>
-</form>
 
 <div class="blur"></div>
 <div class="containers">
     <div class="navbar" th:replace="static/adminnavbar.html :: navbar"></div>
+
+    <!-- Trigger/Open The Modal -->
+
     <div class="container my-3">
         <div class="form-title"><h3><font size="6" color="#faebd7"><B>Utilisateurs</B></font></h3></div>
+
+        <!-- UserForm -->
+        <button id="myBtn" >Create User</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form th:action="@{/admin/users/create}" method="post" th:object="${userform}">
+                    <div>
+                        <label for="username">username</label>
+                        <input type="text" name="username" id="username" th:field="*{username}"/>
+                    </div>
+                    <div>
+                        <label for="password">password</label>
+                        <input type="password" name="password" id="password" th:field="*{password}"/>
+                    </div>
+                    <div>
+                        <label for="password">firstname</label>
+                        <input type="text" name="firstname" id="firstname" th:field="*{firstname}"/>
+                    </div>
+                    <div>
+                        <label for="password">lastname</label>
+                        <input type="text" name="lastname" id="lastname" th:field="*{lastname}"/>
+                    </div>
+                    <div>
+                        <button type="submit">Save User</button>
+                    </div>
+                </form>
+            </div>
+
+            </div>
+                </div>
+        </div>
+
+<!--        <script>-->
+<!--            // Get the modal-->
+<!--            var modal = document.getElementById("myModal");-->
+
+<!--            // Get the button that opens the modal-->
+<!--            var btn = document.getElementById("myBtn");-->
+
+<!--            // Get the <span> element that closes the modal-->
+<!--            var span = document.getElementsByClassName("close")[0];-->
+
+<!--            // When the user clicks the button, open the modal-->
+<!--            btn.onclick = function() {-->
+<!--                modal.style.display = "block";-->
+<!--            }-->
+
+<!--            // When the user clicks on <span> (x), close the modal-->
+<!--            span.onclick = function() {-->
+<!--                modal.style.display = "none";-->
+<!--            }-->
+
+<!--            // When the user clicks anywhere outside of the modal, close it-->
+<!--            window.onclick = function(event) {-->
+<!--                if (event.target == modal) {-->
+<!--                    modal.style.display = "none";-->
+<!--                }-->
+<!--            }-->
+<!--        </script>-->
+        <!--        End Modal-->
+
         <div class="form-background-list">
             <!--            <a th:href="@{/users/create}" class="btn btn-block btn-success my-2">Ajouter un utilisateur</a>-->
             <table class="table table-bordered table-striped table-sm">
@@ -47,15 +97,19 @@
                 <tbody>
                 <tr th:each="user : ${users}">
                     <td th:text="${user.username}"></td>
+                    <td style="display:none" th:text="${user.username}"></td>
                     <td th:text="${user.lastname}"></td>
+                    <td style="display:none" th:text="${user.lastname}"></td>
                     <td th:text="${user.firstname}"></td>
+                    <td style="display:none" th:text="${user.firstname}"></td>
                     <td class="action-button">
                         <!--                        <a th:href="@{'/users/user/' + ${user.id}}"   class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>-->
-                        <a th:href="@{'/users/update/' + ${user.id}}" class="btn btn-sm btn-warning">Update User<i
+                        <a th:href="@{'/admin/users/update/' + ${user.id}}" class="btn btn-sm btn-warning">Update User<i
                                 class="far fa-edit"></i></a>
-                        <a th:onclick="confirmDelete([[${user.id}]], '/users/delete/')" class="btn btn-sm btn-danger">Delete
+
+                        <a onclick="return confirm('Are you sure you want to delete ?') ;" th:href="@{'/admin/users/delete/' + ${user.id}}" class="btn btn-sm btn-danger">Delete
                             user<i class="far fa-trash-alt"></i></a>
-                        <!--                        <th:block >-->
+                        <!--   onclick="confirmDelete([[${user.id}]],                      <th:block >-->
                         <!--                            <a th:href="@{'/users/activate/' + ${user.id}}" class="btn btn-sm btn-success"><i class="far fa-check-circle"></i></a>-->
                         <!--                        </th:block>-->
                     </td>
@@ -63,9 +117,11 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 </div>
 <!--<div th:replace="fragments/deleteConfirmModal.html :: div"></div>-->
 </body>
+<footer th:insert="static/footer.html :: foot"></footer>
 
 </html>

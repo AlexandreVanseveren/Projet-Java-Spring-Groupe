@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="static/header.html :: head">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<h1>Admin page</h1>
+
+<div class="blur2"></div>
+<div class="containers">
+    <div class="navbar" th:replace="static/adminnavbar.html :: navbar"></div>
+    <div class="sidenav">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <!-- Trigger/Open The Modal -->
+    <div class="container my-3">
+        <div class="form-title"><h3><font size="6" color="#faebd7"><B>Products</B></font></h3></div>
+
+<!--        &lt;!&ndash; UserForm &ndash;&gt;-->
+<!--        <button id="myBtn" >Create User</button>-->
+
+<!--        &lt;!&ndash; The Modal &ndash;&gt;-->
+<!--        <div id="myModal" class="modal">-->
+<!--            <div class="vertical-alignment-helper">-->
+<!--                <div class="modal-dialog vertical-align-center">-->
+
+<!--                    &lt;!&ndash; Modal content &ndash;&gt;-->
+<!--                    <div class="modal-content">-->
+<!--                        <span class="close">&times;</span>-->
+<!--                        <form th:action="@{/admin/users/create}" method="post" th:object="${userform}">-->
+<!--                            <div>-->
+<!--                                <label for="username">username</label>-->
+<!--                                <input type="text" name="username" id="username" th:field="*{username}"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <label for="password">password</label>-->
+<!--                                <input type="password" name="password" id="password" th:field="*{password}"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <label for="password">firstname</label>-->
+<!--                                <input type="text" name="firstname" id="firstname" th:field="*{firstname}"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <label for="password">lastname</label>-->
+<!--                                <input type="text" name="lastname" id="lastname" th:field="*{lastname}"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <button type="submit">Save User</button>-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <script>-->
+<!--            // Get the modal-->
+<!--            var modal = document.getElementById("myModal");-->
+
+<!--            // Get the button that opens the modal-->
+<!--            var btn = document.getElementById("myBtn");-->
+
+<!--            // Get the <span> element that closes the modal-->
+<!--            var span = document.getElementsByClassName("close")[0];-->
+
+<!--            // When the user clicks the button, open the modal-->
+<!--            btn.onclick = function() {-->
+<!--                modal.style.display = "block";-->
+<!--            }-->
+
+<!--            // When the user clicks on <span> (x), close the modal-->
+<!--            span.onclick = function() {-->
+<!--                modal.style.display = "none";-->
+<!--            }-->
+
+<!--            // When the user clicks anywhere outside of the modal, close it-->
+<!--            window.onclick = function(event) {-->
+<!--                if (event.target == modal) {-->
+<!--                    modal.style.display = "none";-->
+<!--                }-->
+<!--            }-->
+<!--        </script>-->
+<!--        &lt;!&ndash;        End Modal&ndash;&gt;-->
+
+        <div class="form-background-list">
+            <!--            <a th:href="@{/users/create}" class="btn btn-block btn-success my-2">Ajouter un utilisateur</a>-->
+            <table class="table table-bordered table-striped table-sm">
+                <thead class="thead-dark">
+                <tr>
+                    <th class="col-login">Product Name</th>
+                    <th class="col-last-name">Mise en Rayon</th>
+                    <th class="col-first-name">Péremption</th>
+                    <th class="col-first-name">Prix</th>
+                    <th class="col-first-name">Catégorie</th>
+                    <th class="col-first-name">Statut</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.productname}"></td>
+                    <td style="display:none" th:text="${product.productname}"></td>
+                    <td th:text="${product.rayon}"></td>
+                    <td style="display:none" th:text="${product.rayon}"></td>
+                    <td th:text="${product.peremption}"></td>
+                    <td style="display:none" th:text="${product.peremption}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td style="display:none" th:text="${product.price}"></td>
+                    <td th:text="${product.id_subfk.sub_name}"></td>
+                    <td style="display:none" th:text="${product.id_subfk.sub_name}"></td>
+                    <td th:text="${product.id_statfk.stat_name}"></td>
+                    <td style="display:none" th:text="${product.id_statfk.stat_name}"></td>
+
+
+                    <td class="action-button">
+                        <!--                        <a th:href="@{'/users/user/' + ${user.id}}"   class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>-->
+                        <a th:href="@{'/admin/products/update/' + ${product.id}}" class="btn btn-sm btn-warning">Update User<i
+                                class="far fa-edit"></i></a>
+
+                        <a onclick="return confirm('Are you sure you want to delete ?') ;" th:href="@{'/admin/products/delete/' + ${product.id}}" class="btn btn-sm btn-danger">Delete
+                            product<i class="far fa-trash-alt"></i></a>
+                        <!--   onclick="confirmDelete([[${product.id}]],                      <th:block >-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<!--<div th:replace="fragments/deleteConfirmModal.html :: div"></div>-->
+</body>
+<footer th:insert="static/footer.html :: foot"></footer>
+</html>
