@@ -1,78 +1,82 @@
-body {
-    font-family: "Lato", sans-serif;
-}
+/*body {*/
+/*    font-family: "Lato", sans-serif;*/
+/*}*/
 
-.main-head {
-    height: 150px;
-    background: #FFF;
+/*.main-head {*/
+/*    height: 150px;*/
+/*    background: #FFF;*/
 
-}
+/*}*/
 
-.sidenav {
-    height: 100%;
-    background-color: darkseagreen;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-
-.main {
-    padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .login-form {
-        margin-top: 10%;
-    }
-
-    .register-form {
-        margin-top: 10%;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .main {
-        margin-left: 40%;
-    }
-
-    .sidenav {
-        width: 40%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-    }
-
-    .login-form {
-        margin-top: 80%;
-    }
-
-    .register-form {
-        margin-top: 20%;
-    }
-}
+/*.sidenavindex {*/
+/*    height: 100%;*/
+/*    background-color: darkseagreen;*/
+/*    overflow-x: hidden;*/
+/*    padding-top: 20px;*/
+/*}*/
 
 
-.login-main-text {
-    margin-top: 20%;
-    padding: 60px;
-    color: #fff;
-}
+/*.mainindex {*/
+/*    padding: 0px 10px;*/
+/*}*/
 
-.login-main-text h2 {
-    font-weight: 300;
-}
+/*@media screen and (max-height: 450px) {*/
+/*    .sidenav {*/
+/*        padding-top: 15px;*/
+/*    }*/
+/*}*/
 
-.btn-black {
-    background-color: #000 !important;
-    color: #fff;
-}
+/*@media screen and (max-width: 450px) {*/
+/*    .login-form {*/
+/*        margin-top: 10%;*/
+/*    }*/
+
+/*    .register-form {*/
+/*        margin-top: 10%;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 768px) {*/
+/*    .main {*/
+/*        margin-left: 40%;*/
+/*    }*/
+
+/*    .sidenav {*/
+/*        width: 40%;*/
+/*        position: fixed;*/
+/*        z-index: 1;*/
+/*        top: 0;*/
+/*        left: 0;*/
+/*    }*/
+
+/*    .login-form {*/
+/*        margin-top: 80%;*/
+/*    }*/
+
+/*    .register-form {*/
+/*        margin-top: 20%;*/
+/*    }*/
+/*}*/
+
+
+/*.login-main-text {*/
+/*    margin-top: 20%;*/
+/*    padding: 60px;*/
+/*    color: #fff;*/
+/*}*/
+
+/*.login-main-text h2 {*/
+/*    font-weight: 300;*/
+/*}*/
+
+/*.btn-black {*/
+/*    background-color: #000 !important;*/
+/*    color: #fff;*/
+/*}*/
+
+
+
+/* Modal */
 
 .modal {
     overflow: auto; /* Enable scroll if needed */
@@ -94,8 +98,8 @@ body {
 /* Modal Content */
 .modal-content {
     /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
-    width:inherit;
-    height:inherit;
+    width:400px;
+    height:400%;
     /* To center horizontally */
     margin: 0 auto;
 }
@@ -115,4 +119,51 @@ body {
     cursor: pointer;
 }
 
+/*End Modal*/
 
+
+
+/*sidenavebar*/
+
+.sidenav {
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 150px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #064579;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+footer
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}

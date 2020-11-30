@@ -90,6 +90,7 @@ public class AdminController {
         Set<ProductDTO> products = productService.getAll();
         // add to the spring model
         model.addAttribute("products", products);
+        System.out.println(products);
         return "admin/product";
     }
 
@@ -100,6 +101,7 @@ public class AdminController {
         // redirect to prevent duplicate submissions
         return "redirect:/admin/productlist";
     }
+
 
 
 }
