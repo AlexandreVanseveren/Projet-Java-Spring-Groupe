@@ -1,11 +1,19 @@
 package be.ifosup.glvp.services.impl;
 
 
+import be.ifosup.glvp.constants.RoleEnum;
+
 import be.ifosup.glvp.forms.UserForm;
 import be.ifosup.glvp.helpers.ToModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 
 import be.ifosup.glvp.entities.User;
@@ -14,27 +22,35 @@ import be.ifosup.glvp.repositories.UserRepository;
 import be.ifosup.glvp.services.UserService;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class UsersServiceImpl implements UserService {
-
-    private final UserRepository userRepository;
+    @Qualifier("userRepository")
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
-    public UsersServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UsersServiceImpl(
+        @Qualifier("userRepository") UserRepository userRepository) {
+            this.userRepository = userRepository;
     }
 
     @Override
     public UserDTO create(UserForm userform) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodePassword = bCryptPasswordEncoder.encode(userform.getPassword());
+        List<RoleEnum> roleEnums = new ArrayList<>();
+        roleEnums.add(RoleEnum.USER);
        User entity = User.builder()
                 .username(userform.getUsername())
                 .lastname(userform.getLastname())
                 .firstname(userform.getFirstname())
                 .password(encodePassword)
+                .roles(roleEnums)
+                .enabled(true)
+                .accountNonExpired(true)
+                .accountNonLocked(true)
+                .credentialsNonExpired(true)
                 .build();
         User user = userRepository.save(entity);
         return ToModel.getUserFromEntity(user);
@@ -49,6 +65,7 @@ public class UsersServiceImpl implements UserService {
             System.out.println("Something went wrong.");
         }
     }
+
 
     @Override
     public UserDTO getById(long id) {
@@ -79,17 +96,4 @@ public class UsersServiceImpl implements UserService {
         return ToModel.getUsersFromEntities(entities);
     }
 
-//    @Override
-//    public List<UserDTO> getAll() {
-//        List<User> entities = userRepository.findAll();
-//
-//        return entities.stream()
-//                .map(userEntity -> UserDTO
-//                        .builder()
-//                        .id(userEntity.getId())
-//                        .firstname(userEntity.getFirstname())
-//                        .lastname(userEntity.getLastname())
-//                        .build()
-//                ).collect(Collectors.toList());
-//    }
 }
