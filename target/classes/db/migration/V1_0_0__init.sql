@@ -59,7 +59,7 @@ create table subcat (
 ) engine=InnoDB;
 
 create table products (
-                          id_prod bigint not null,
+                          id_prod bigint not null auto_increment,
                           prod_name varchar(255) not null,
                           rayon date,
                           peremption date,

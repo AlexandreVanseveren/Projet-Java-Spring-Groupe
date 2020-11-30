@@ -119,9 +119,9 @@ public class AdminController {
          Set<StatutDTO> status = statutService.getAll();
          // add to the spring model
          model2.addAttribute("status", status);
-//         System.out.println(subcat);
-//         System.out.println(status);
-//         System.out.println(products);
+         System.out.println(subcat);
+         System.out.println(status);
+         System.out.println(products);
         return "admin/product";
     }
 
