@@ -1,5 +1,6 @@
 package be.ifosup.glvp.forms;
 
+import be.ifosup.glvp.entities.Subcat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

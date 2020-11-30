@@ -2,18 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="static/header.html :: head">
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 
 <body>
 <h1>Admin page</h1>
 
-<div class="blur"></div>
+<div class="blur2"></div>
 <div class="containers">
     <div class="navbar" th:replace="static/adminnavbar.html :: navbar"></div>
-
+    <div class="sidenav">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
     <!-- Trigger/Open The Modal -->
-
     <div class="container my-3">
         <div class="form-title"><h3><font size="6" color="#faebd7"><B>Products</B></font></h3></div>
 
@@ -111,6 +114,8 @@
                     <th class="col-last-name">Mise en Rayon</th>
                     <th class="col-first-name">Péremption</th>
                     <th class="col-first-name">Prix</th>
+                    <th class="col-first-name">Catégorie</th>
+                    <th class="col-first-name">Statut</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -123,6 +128,12 @@
                     <td style="display:none" th:text="${product.peremption}"></td>
                     <td th:text="${product.price}"></td>
                     <td style="display:none" th:text="${product.price}"></td>
+                    <td th:text="${product.id_subfk.sub_name}"></td>
+                    <td style="display:none" th:text="${product.id_subfk.sub_name}"></td>
+                    <td th:text="${product.id_statfk.stat_name}"></td>
+                    <td style="display:none" th:text="${product.id_statfk.stat_name}"></td>
+
+
                     <td class="action-button">
                         <!--                        <a th:href="@{'/users/user/' + ${user.id}}"   class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>-->
                         <a th:href="@{'/admin/products/update/' + ${product.id}}" class="btn btn-sm btn-warning">Update User<i
@@ -141,5 +152,5 @@
 </div>
 <!--<div th:replace="fragments/deleteConfirmModal.html :: div"></div>-->
 </body>
-
+<footer th:insert="static/footer.html :: foot"></footer>
 </html>
