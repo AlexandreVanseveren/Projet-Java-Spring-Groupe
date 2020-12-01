@@ -83,4 +83,13 @@ public class ToModel {
                         .build()
                 ).collect(Collectors.toSet());
     }
+    public static Set<CategoryDTO> getCategegoriesFromEntities(Set<Category> entities) {
+        return entities.stream()
+                .map( categoryEntity -> CategoryDTO
+                        .builder()
+                        .id(categoryEntity.getId_cat())
+                        .cat_name(categoryEntity.getCat_name())
+                        .build()
+                ).collect(Collectors.toSet());
+    }
 }

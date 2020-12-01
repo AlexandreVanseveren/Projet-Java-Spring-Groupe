@@ -16,7 +16,7 @@ import java.sql.Date;
 @AllArgsConstructor
 public class ProductForm implements Serializable {
 
-//    private Long id;
+    private Long id;
     private String productname;
     private Date rayon;
     private Date peremption;

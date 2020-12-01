@@ -13,7 +13,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserForm implements Serializable {
-
     private String lastname;
     private String firstname;
     private String username;

@@ -99,7 +99,7 @@
 .modal-content {
     /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
     width:400px;
-    height:400%;
+    height:400px;
     /* To center horizontally */
     margin: 0 auto;
 }

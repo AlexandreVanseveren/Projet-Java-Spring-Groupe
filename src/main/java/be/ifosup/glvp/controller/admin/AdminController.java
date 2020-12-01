@@ -5,9 +5,7 @@ import be.ifosup.glvp.forms.UserForm;
 import be.ifosup.glvp.models.ProductDTO;
 import be.ifosup.glvp.models.StatutDTO;
 import be.ifosup.glvp.models.SubcatDTO;
-import be.ifosup.glvp.services.ProductService;
-import be.ifosup.glvp.services.StatutService;
-import be.ifosup.glvp.services.SubcatService;
+import be.ifosup.glvp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 //Importation des services, modeles nécessaires pour les objets
 import be.ifosup.glvp.models.UserDTO;
-import be.ifosup.glvp.services.UserService;
 
 import java.util.Set;
 
@@ -34,13 +31,16 @@ public class AdminController {
     private final ProductService productService;
     private final SubcatService subcatService;
     private final StatutService statutService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public AdminController(UserService usersService, ProductService productService, StatutService statutService, SubcatService subcatService) {
+    public AdminController(UserService usersService, ProductService productService, StatutService statutService,
+                           SubcatService subcatService, CategoryService categoryService) {
         this.usersService = usersService;
         this.productService = productService;
         this.subcatService = subcatService;
         this.statutService = statutService;
+        this.categoryService= categoryService;
     }
 
 
@@ -56,6 +56,18 @@ public class AdminController {
     public String CreateUser(@ModelAttribute("userform") UserForm userForm) {
         usersService.create(userForm);
         return "redirect:/admin/userlist";
+    }
+
+    @GetMapping("/product/update/{id}")
+    public String GetStudent(@PathVariable("id") int id, Model model) {
+        ProductDTO product = productService.getById(id);
+        model.addAttribute("product", product);
+        return "students/studentUpdate";
+    }
+    @PostMapping("/product/update")
+    public String UpdateStudent(@ModelAttribute("product") ProductForm productForm) {
+        productService.update(productForm);
+        return "redirect:/students/list";
     }
 
     @GetMapping("/product/create")
