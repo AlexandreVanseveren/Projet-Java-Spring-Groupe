@@ -81,7 +81,7 @@ public class AdminController {
     @PostMapping("/product/create")
     public String CreateProduct(@ModelAttribute("productform") ProductForm productForm) {
         productService.create(productForm);
-        return "redirect:/admin/userlist";
+        return "redirect:/admin/productlist";
     }
 
     @GetMapping("/users/delete/{id}")
