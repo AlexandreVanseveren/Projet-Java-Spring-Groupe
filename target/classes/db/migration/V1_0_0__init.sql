@@ -16,42 +16,22 @@ create table users (
                        primary key (id_user)
 ) engine=InnoDB;
 
--- create table roles (
---                        id_role bigint not null,
---                        role varchar(255) not null,
---                        primary key (id_role)
---
--- ) engine=InnoDB;
---
--- create table users (
---                        id_user bigint not null AUTO_INCREMENT,
---                        account_non_expired bit,
---                        account_non_locked bit,
---                        credentials_non_expired bit,
---                        enabled bit,
---                        firstname varchar(255) not null,
---                        lastname varchar(255) not null,
---                        password varchar(255) not null,
---                        username varchar(255) not null,
---                        id_rolefk bigint not null,
---                        primary key (id_user)
--- ) engine=InnoDB;
 
 create table statut (
-                        id_stat bigint not null,
+                        id_stat bigint not null auto_increment,
                         stat_name varchar(255),
                         primary key (id_stat)
 
 ) engine=InnoDB;
 
 create table categories (
-                            id_cat bigint not null ,
+                            id_cat bigint not null auto_increment,
                             cat_name varchar(255) not null,
                             primary key (id_cat)
 ) engine=InnoDB;
 
 create table subcat (
-                        id_sub bigint not null,
+                        id_sub bigint not null auto_increment,
                         sub_name varchar (255) not null,
                         id_catfk bigint not null,
                         primary key (id_sub)
