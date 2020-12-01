@@ -59,13 +59,13 @@
                                             th:text="${cat.subcat}"></option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="statut">statut</label>
-                                <select id="statut" class="form-control" th:field="*{id_statfk}" required>
-                                    <option th:each="stat : ${status}" th:value="${stat.id}"
-                                            th:text="${stat.stat_name}"></option>
-                                </select>
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label for="statut">statut</label>-->
+<!--                                <select id="statut" class="form-control" th:field="*{id_statfk}" required>-->
+<!--                                    <option th:each="stat : ${status}" th:value="${stat.id}"-->
+<!--                                            th:text="${stat.stat_name}"></option>-->
+<!--                                </select>-->
+<!--                            </div>-->
                            <div>
                                <button type="submit">Save Product</button>
                             </div>
