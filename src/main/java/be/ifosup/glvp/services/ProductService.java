@@ -13,4 +13,5 @@ public interface ProductService {
     ProductDTO getById(long id);
     void deleteById(long id);
     ProductDTO create(ProductForm productform);
+    ProductDTO update(ProductForm productForm);
 }

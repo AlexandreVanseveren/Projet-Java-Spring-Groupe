@@ -5,6 +5,8 @@ import be.ifosup.glvp.entities.Product;
 import be.ifosup.glvp.forms.ProductForm;
 import be.ifosup.glvp.helpers.ToModel;
 import be.ifosup.glvp.repositories.ProductRepository;
+import be.ifosup.glvp.repositories.StatutRepository;
+import be.ifosup.glvp.repositories.SubcatRepository;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,11 +24,21 @@ public class ProductServiceImpl implements ProductService {
     @Qualifier("productRepository")
     @Autowired
     private ProductRepository productRepository;
+    @Qualifier("statutRepository")
+    @Autowired
+    private StatutRepository statutRepository;
+    @Qualifier("subcatRepository")
+    @Autowired
+    private SubcatRepository subcatRepository;
 
     @Autowired
     public ProductServiceImpl(
-            @Qualifier("productRepository") ProductRepository productRepository) {
+            @Qualifier("productRepository") ProductRepository productRepository,
+            @Qualifier("statutRepository") StatutRepository statutRepository,
+            @Qualifier("subcatRepository") SubcatRepository subcatRepository) {
         this.productRepository = productRepository;
+        this.statutRepository = statutRepository;
+        this.subcatRepository=subcatRepository;
     }
 
     @Override
@@ -35,10 +47,29 @@ public class ProductServiceImpl implements ProductService {
                 .product(productForm.getProductname())
                 .rayon(productForm.getRayon())
                 .peremption(productForm.getPeremption())
+                .sub_name(subcatRepository.findById(productForm.getId_subfk()).orElse(null))
+                .stat_name(statutRepository.findById(productForm.getId_statfk()).orElse((null)))
+                .price(productForm.getPrice())
+                .quantities(productForm.getQuantities())
+                .build();
+        System.out.println(entity);
+        Product product = productRepository.save(entity);
+        return ToModel.getProductFromEntity(product);
+    }
+    @Override
+    public ProductDTO update(ProductForm productForm) {
+        Product entity = Product.builder()
+                .id(productForm.getId())
+                .product(productForm.getProductname())
+                .rayon(productForm.getRayon())
+                .peremption(productForm.getPeremption())
+                .sub_name(subcatRepository.findById(productForm.getId_subfk()).orElse(null))
+                .stat_name(statutRepository.findById(productForm.getId_statfk()).orElse((null)))
+                .price(productForm.getPrice())
+                .quantities(productForm.getQuantities())
                 .build();
         Product product = productRepository.save(entity);
         return ToModel.getProductFromEntity(product);
-
     }
 
     @Override
@@ -83,5 +114,4 @@ public class ProductServiceImpl implements ProductService {
         Set<Product> entities = new HashSet<>(productRepository.findAll());
         return ToModel.getProductsFromEntities(entities);
     }
-
 }

@@ -64,6 +64,32 @@ public class ToModel {
         return productD;
     }
 
-
-
+    public static Set<SubcatDTO> getSubcatsFromEntities(Set<Subcat> entities) {
+        return entities.stream()
+                .map( subcatEntity -> SubcatDTO
+                                .builder()
+                                .id(subcatEntity.getId_sub())
+                                .subcat(subcatEntity.getSub_name())
+                                .id_catfk(subcatEntity.getCat_name())
+                                .build()
+                ).collect(Collectors.toSet());
+    }
+    public static Set<StatutDTO> getStatusFromEntities(Set<Statut> entities) {
+        return entities.stream()
+                .map( statutEntity -> StatutDTO
+                        .builder()
+                        .id(statutEntity.getId_stat())
+                        .stat_name(statutEntity.getStat_name())
+                        .build()
+                ).collect(Collectors.toSet());
+    }
+    public static Set<CategoryDTO> getCategegoriesFromEntities(Set<Category> entities) {
+        return entities.stream()
+                .map( categoryEntity -> CategoryDTO
+                        .builder()
+                        .id(categoryEntity.getId_cat())
+                        .cat_name(categoryEntity.getCat_name())
+                        .build()
+                ).collect(Collectors.toSet());
+    }
 }
