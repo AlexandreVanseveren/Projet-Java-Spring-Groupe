@@ -2,6 +2,7 @@ package be.ifosup.glvp.services.impl;
 
 
 import be.ifosup.glvp.entities.Product;
+import be.ifosup.glvp.entities.Statut;
 import be.ifosup.glvp.forms.ProductForm;
 import be.ifosup.glvp.helpers.ToModel;
 import be.ifosup.glvp.repositories.ProductRepository;
@@ -48,7 +49,8 @@ public class ProductServiceImpl implements ProductService {
                 .rayon(productForm.getRayon())
                 .peremption(productForm.getPeremption())
                 .sub_name(subcatRepository.findById(productForm.getId_subfk()).orElse(null))
-                .stat_name(statutRepository.findById(productForm.getId_statfk()).orElse((null)))
+//                .stat_name(statutRepository.findById(productForm.getId_statfk()).orElse((null)))
+                .stat_name(statutRepository.findById(1))
                 .price(productForm.getPrice())
                 .quantities(productForm.getQuantities())
                 .build();

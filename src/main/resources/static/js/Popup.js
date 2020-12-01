@@ -10,6 +10,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
+    // $("#statut").val(1); //Modif statut produit
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -22,4 +23,21 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+function validateForm() {
+    var msg= "",
+        fields = document.getElementById("form_id").getElementsByTagName("input");
+
+    for (var i=0; i<fields.length; i++){
+        if (fields[i].value === "")
+            msg += fields[i].name + ' is required. \n';
+    }
+
+    if(msg) {
+        alert(msg);
+        return false;
+    }
+    else
+        return true;
 }
