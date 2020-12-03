@@ -23,7 +23,7 @@
         <td style="display:none" th:text="${product.price}"></td>
         <td th:text="${product.id_subfk.sub_name}"></td>
         <td style="display:none" th:text="${product.id_subfk.sub_name}"></td>
-        <td th:text="${product.id_statfk.stat_name}"></td>
+        <td th:style="${product.id_statfk.stat_name} == 'Périmé' ? 'background: red' : (${product.id_statfk.stat_name} == 'Rupture de stock' ? 'background: orange' : 'background : white')" th:text="${product.id_statfk.stat_name}"></td>
         <td style="display:none" th:text="${product.id_statfk.stat_name}"></td>
 
 
