@@ -58,6 +58,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.save(entity);
         return ToModel.getProductFromEntity(product);
     }
+
     @Override
     public ProductDTO update(ProductForm productForm) {
         Product entity = Product.builder()
@@ -95,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO getprodname(String prodname) {
-        Product product = productRepository.findByProduct(prodname); //recherche en fonction du username
+        Product product = productRepository.findByProduct(prodname);
         //Constructeur d'objet
         ProductDTO productDTO =ProductDTO.builder()
                 .id(product.getId())

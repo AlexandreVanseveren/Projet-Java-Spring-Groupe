@@ -10,8 +10,16 @@
 <div class="blur2"></div>
 <div class="containers">
     <div class="navbar" th:replace="static/adminnavbar.html :: navbar"></div>
-    <div class="sidenav" th:each="cat : ${category}">
-        <a th:text="${cat.id}"></a>
+    <div class="sidebar">
+        <p class="nav-item dropdown" th:each="cat : ${category}">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"
+               th:text="${cat.cat_name}">
+            </a>
+        <div class="dropdown-menu" th:each="sub : ${subcat}">
+            <a class="dropdown-item" href="#" th:text="${sub.id_catfk}"></a>
+        </div>
+<!--            <a th:text="${cat.cat_name}" th:href="@{'/admin/product/' + ${cat.cat_name}}"></a></p>-->
+        </p>
     </div>
 
     <!-- Trigger/Open The Modal -->
@@ -57,16 +65,6 @@
                                             th:text="${cat.subcat}"></option>
                                 </select>
                             </div>
-<!--                            <div class="form-group">-->
-<!--                                  <input style="display: none" type="text" value="1" name="Statut" id="statut"  th:field="*{id_statfk}"/>-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="statut">statut</label>-->
-<!--                                <select id="statut" class="form-control" th:field="*{id_statfk}" required>-->
-<!--                                    <option th:each="stat : ${status}" th:value="${stat.id}"-->
-<!--                                            th:text="${stat.stat_name}"></option>-->
-<!--                                </select>-->
-<!--                            </div>-->
                            <div>
                                <button type="submit">Save Product</button>
                             </div>

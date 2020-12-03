@@ -118,7 +118,6 @@ public class AdminController {
         ProductForm productForm1 = new ProductForm();
         model.addAttribute("productform", productForm1);
         // get users from db
-
         // add to the spring model
          Set<ProductDTO> products = productService.getAll();
          model.addAttribute("products", products);
@@ -131,11 +130,10 @@ public class AdminController {
          // add to the spring model
          Set<CategoryDTO> category = categoryService.getAll();
          model2.addAttribute("category", category);
-
 //         System.out.println(subcat);
 //         System.out.println(status);
 //         System.out.println(products);
-         System.out.println(category);
+//         System.out.println(category);
         return "admin/product";
     }
 

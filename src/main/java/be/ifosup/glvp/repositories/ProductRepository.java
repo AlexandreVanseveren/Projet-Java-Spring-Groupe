@@ -16,6 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @param product
      * @return
      */
-    Product findByProduct(String product);
-    Product findById(long id);
+    Product findByProduct(String product); //1 Produit
+    Product findById(long id); //Par id
+    <List> Product FindByPeremptionOrderByPeremptionDesc();
 }
