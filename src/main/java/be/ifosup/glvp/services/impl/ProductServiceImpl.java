@@ -57,10 +57,7 @@ public class ProductServiceImpl implements ProductService {
                 .rayon(productForm.getRayon())
                 .peremption(productForm.getPeremption())
                 .sub_name(subcatRepository.findById(productForm.getId_subfk()).orElse(null))
-<<<<<<< HEAD
 //                .stat_name(statutRepository.findById(productForm.getId_statfk()).orElse((null)))
-=======
->>>>>>> Feature3
                 .stat_name(statutRepository.findById(1))
                 .price(productForm.getPrice())
                 .quantities(productForm.getQuantities())

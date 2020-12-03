@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<div th:fragment="CreateProduct">
+<div>
+    <label for="productname">Product Name</label>
+    <input type="text" name="Product name" id="productname" th:field="*{productname}"/>
+</div>
+<div>
+    <label for="rayon">Mise en Rayon</label>
+    <input type="date" name="Rayon" id="rayon" th:field="*{rayon}"/>
+</div>
+<div>
+    <label for="peremption">Peremption</label>
+    <input type="date" name="Peremption" id="peremption" th:field="*{peremption}"/>
+</div>
+<div>
+    <label for="price">Price</label>
+    <input type="number" min="0" step="0.01" name="Price" id="price" th:field="*{price}"/>
+</div>
+<div>
+    <label for="quantities">Quantites</label>
+    <input type="number" min="1" max="100" name="Quantities" id="quantities" th:field="*{quantities}"/>
+</div>
+<div class="form-group">
+    <label for="categorie">Categorie</label>
+    <select id="categorie" class="form-control" th:field="*{id_subfk}" required>
+        <option th:each="cat : ${subcat}" th:value="${cat.id}"
+                th:text="${cat.subcat}"></option>
+    </select>
+</div>
+<div>
+    <button type="submit">Save Product</button>
+</div>
+</div>
+</html>

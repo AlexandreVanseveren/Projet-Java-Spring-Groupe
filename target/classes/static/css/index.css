@@ -36,8 +36,22 @@
     font-weight: bold;
 }
 
+.updtclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
 .close:hover,
 .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.updtclose:hover,
+.updtclose:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

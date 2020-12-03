@@ -59,12 +59,13 @@ public class AdminController {
     public String GetStudent(@PathVariable("id") int id, Model model) {
         ProductDTO product = productService.getById(id);
         model.addAttribute("product", product);
-        return "students/studentUpdate";
+        return "admin/productlist";
     }
+
     @PostMapping("/product/update")
     public String UpdateStudent(@ModelAttribute("product") ProductForm productForm) {
         productService.update(productForm);
-        return "redirect:/students/list";
+        return "redirect:/admin/produclist";
     }
 
     @GetMapping("/product/create")
@@ -119,13 +120,10 @@ public class AdminController {
         return "admin/product";
     }
 
-<<<<<<< HEAD
-     @GetMapping("/productlist")
-    public String listProducts(Model model,Model model1,Model model2, Model model3 ) {
-=======
+
     @GetMapping("/productlist")
     public String listProducts(Model model) {
->>>>>>> Feature3
+
         ProductForm productForm1 = new ProductForm();
         model.addAttribute("productform", productForm1);
         // get users from db
@@ -133,22 +131,20 @@ public class AdminController {
          Set<ProductDTO> products = productService.getAll();
          model.addAttribute("products", products);
          // add to the spring model
-<<<<<<< HEAD
          Set<SubcatDTO> subcat = subcatService.getAll();
-         model1.addAttribute("subcat", subcat);
+         model.addAttribute("subcat", subcat);
          // add to the spring model
          Set<StatutDTO> status = statutService.getAll();
-         model2.addAttribute("status", status);
+         model.addAttribute("status", status);
          // add to the spring model
          Set<CategoryDTO> category = categoryService.getAll();
-         model2.addAttribute("category", category);
+         model.addAttribute("category", category);
 //         System.out.println(subcat);
 //         System.out.println(status);
 //         System.out.println(products);
 //         System.out.println(category);
-=======
          model.addAttribute("subcat", subcat);
-         Set<StatutDTO> status = statutService.getAll();
+//         Set<StatutDTO> status = statutService.getAll();
          Set<ProductDTO> pr1 = productService.getByCategory(1);
          Set<ProductDTO> pr2 = productService.getBysubCategory(1);
          Set<ProductDTO> pr3 = productService.getBystatut(2);
@@ -158,7 +154,7 @@ public class AdminController {
 //         System.out.println(subcat);
 //         System.out.println(status);
 //         System.out.println(products);
->>>>>>> Feature3
+
         return "admin/product";
     }
 

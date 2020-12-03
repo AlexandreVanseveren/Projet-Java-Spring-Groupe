@@ -4,17 +4,17 @@ import be.ifosup.glvp.entities.Product;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-<<<<<<< HEAD
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-=======
+
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Set;
->>>>>>> Feature3
+
 
 /**
  * Gestion JPA pour les utilisateurs
@@ -28,15 +28,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @param
      * @return
      */
-<<<<<<< HEAD
-    Product findByProduct(String product); //1 Produit
-
-    Product findById(long id); //Par id
 
 //    @Query(value = "SELECT '*' FROM products order by peremption DESC")
 //    List<Product> findAllProduct();
 
-=======
 
     Product findByProduct(String product);
     Product findById(long id);
@@ -46,5 +41,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllById_subcatfk(@Param("fk") Long id_subfk);
     @Query(nativeQuery =true, value = "SELECT * FROM products where id_statfk = (:fk)")
     List<Product> findAllById_statfk(@Param("fk") Long id_statfk);
->>>>>>> Feature3
 }

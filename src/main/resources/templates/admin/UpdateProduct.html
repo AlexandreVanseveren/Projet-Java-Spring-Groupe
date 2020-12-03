@@ -1,35 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="static/header.html :: head">
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<!-- Trigger/Open The Modal -->
-<div class="container my-3">
-    <div class="form-title"><h3><font size="6" color="#faebd7"><B>Products</B></font></h3></div>
-<!--         ProductForm-->
-<button id="myBtn" >Update Product</button>
-
-<!--        The Modal -->
-<div id="myModal" class="modal">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-
-            <!--                     Modal content-->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <form th:action="@{/admin/product/update}" method="post" th:object="${}">
+<div th:fragment="UpdateProduct">
+                    <div>
+                        <input style="display: none" type="text" name="id" id="id" th:field="*{id}"/>
+                    </div>
                     <div>
                         <label for="productname">productname</label>
-                        <input type="text" name="productname" id="productname" th:field="*{productname}"/>
+                        <input type="text" name="Product name" id="productname" th:field="*{productname}"/>
                     </div>
                     <div>
                         <label for="rayon">rayon</label>
-                        <input type="date" name="rayon" id="rayon" th:field="*{rayon}"/>
+                        <input type="date" name="Rayon" id="rayon" th:field="*{rayon}"/>
                     </div>
                     <div>
                         <label for="peremption">peremption</label>
-                        <input type="date" name="peremption" id="peremption" th:field="*{peremption}"/>
+                        <input type="date" name="Peremption" id="peremption" th:field="*{peremption}"/>
                     </div>
                     <div>
                         <label for="price">price</label>
@@ -56,13 +41,9 @@
                     <div>
                         <button type="submit">Save Product</button>
                     </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
 </div>
 
+
 <!--        End Modal-->
-</body>
+
 </html>
