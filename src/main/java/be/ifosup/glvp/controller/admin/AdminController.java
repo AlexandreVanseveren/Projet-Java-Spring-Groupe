@@ -116,9 +116,15 @@ public class AdminController {
         return "admin/users";
     }
 
+    @GetMapping("/categorielist/{id}")
+    public String listCategorie(Model model,@PathVariable("id") int id){
+        Set<ProductDTO> pr1 = productService.getByCategory(id);
+        model.addAttribute("pr1",pr1);
+        return "admin/product";
+    }
 
-     @GetMapping("/productlist")
-    public String listProducts(Model model,Model model1,Model model2 ) {
+    @GetMapping("/productlist")
+    public String listProducts(Model model) {
         ProductForm productForm1 = new ProductForm();
         model.addAttribute("productform", productForm1);
         // get users from db
@@ -127,13 +133,17 @@ public class AdminController {
         model.addAttribute("products", products);
          Set<SubcatDTO> subcat = subcatService.getAll();
          // add to the spring model
-         model1.addAttribute("subcat", subcat);
+         model.addAttribute("subcat", subcat);
          Set<StatutDTO> status = statutService.getAll();
-         // add to the spring model
-         model2.addAttribute("status", status);
-         System.out.println(subcat);
-         System.out.println(status);
-         System.out.println(products);
+         Set<ProductDTO> pr1 = productService.getByCategory(1);
+         Set<ProductDTO> pr2 = productService.getBysubCategory(1);
+         Set<ProductDTO> pr3 = productService.getBystatut(2);
+//
+//         add to the spring model
+       model.addAttribute("status", status);
+//         System.out.println(subcat);
+//         System.out.println(status);
+//         System.out.println(products);
         return "admin/product";
     }
 

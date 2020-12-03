@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import be.ifosup.glvp.models.ProductDTO;
 import be.ifosup.glvp.services.ProductService;
 
+import java.sql.Array;
 import java.util.*;
 
 
@@ -40,6 +41,9 @@ public class ProductServiceImpl implements ProductService {
         this.statutRepository = statutRepository;
         this.subcatRepository=subcatRepository;
     }
+
+
+
 
     @Override
     public ProductDTO create(ProductForm productForm) {
@@ -109,6 +113,23 @@ public class ProductServiceImpl implements ProductService {
                 .build();
 
         return productDTO;
+    }
+    @Override
+    public Set<ProductDTO>getByCategory(long id){
+        Set<Product> entities = new HashSet<>(productRepository.findAllById_subfk(id));
+        return ToModel.getProductsFromEntities(entities);
+    }
+
+    @Override
+    public Set<ProductDTO>getBysubCategory(long id){
+        Set<Product> entities = new HashSet<>(productRepository.findAllById_subcatfk(id));
+        return ToModel.getProductsFromEntities(entities);
+    }
+
+    @Override
+    public Set<ProductDTO>getBystatut(long id){
+        Set<Product> entities = new HashSet<>(productRepository.findAllById_statfk(id));
+        return ToModel.getProductsFromEntities(entities);
     }
 
     @Override
