@@ -25,6 +25,7 @@ window.onclick = function(event) {
     }
 }
 
+
 function validateForm() {
     var msg= "",
         fields = document.getElementById("form_id").getElementsByTagName("input");
@@ -33,7 +34,6 @@ function validateForm() {
         if (fields[i].value === "")
             msg += fields[i].name + ' is required. \n';
     }
-
     if(msg) {
         alert(msg);
         return false;

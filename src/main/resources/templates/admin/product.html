@@ -12,7 +12,7 @@
     <div class="navbar" th:replace="static/adminnavbar.html :: navbar"></div>
     <div class="sidebar">
         <p class="nav-item dropdown" th:each="cat : ${category}">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" th:href="@{'/admin/product/' + ${cat.cat_name}}" id="navbardrop" data-toggle="dropdown"
                th:text="${cat.cat_name}">
             </a>
         <div class="dropdown-menu" th:each="sub : ${subcat}">
@@ -21,6 +21,7 @@
 <!--            <a th:text="${cat.cat_name}" th:href="@{'/admin/product/' + ${cat.cat_name}}"></a></p>-->
         </p>
     </div>
+
 
     <!-- Trigger/Open The Modal -->
     <div class="container my-3">
