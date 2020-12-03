@@ -24,5 +24,4 @@ public class ProductDTO {
     private Statut id_statfk;
     private Float price;
     private Integer quantities;
-
 }

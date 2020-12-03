@@ -112,9 +112,20 @@ public class AdminController {
         return "admin/users";
     }
 
+    @GetMapping("/categorielist/{id}")
+    public String listCategorie(Model model,@PathVariable("id") int id){
+        Set<ProductDTO> pr1 = productService.getByCategory(id);
+        model.addAttribute("pr1",pr1);
+        return "admin/product";
+    }
 
+<<<<<<< HEAD
      @GetMapping("/productlist")
     public String listProducts(Model model,Model model1,Model model2, Model model3 ) {
+=======
+    @GetMapping("/productlist")
+    public String listProducts(Model model) {
+>>>>>>> Feature3
         ProductForm productForm1 = new ProductForm();
         model.addAttribute("productform", productForm1);
         // get users from db
@@ -122,6 +133,7 @@ public class AdminController {
          Set<ProductDTO> products = productService.getAll();
          model.addAttribute("products", products);
          // add to the spring model
+<<<<<<< HEAD
          Set<SubcatDTO> subcat = subcatService.getAll();
          model1.addAttribute("subcat", subcat);
          // add to the spring model
@@ -134,6 +146,19 @@ public class AdminController {
 //         System.out.println(status);
 //         System.out.println(products);
 //         System.out.println(category);
+=======
+         model.addAttribute("subcat", subcat);
+         Set<StatutDTO> status = statutService.getAll();
+         Set<ProductDTO> pr1 = productService.getByCategory(1);
+         Set<ProductDTO> pr2 = productService.getBysubCategory(1);
+         Set<ProductDTO> pr3 = productService.getBystatut(2);
+//
+//         add to the spring model
+       model.addAttribute("status", status);
+//         System.out.println(subcat);
+//         System.out.println(status);
+//         System.out.println(products);
+>>>>>>> Feature3
         return "admin/product";
     }
 

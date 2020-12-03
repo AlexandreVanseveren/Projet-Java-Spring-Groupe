@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import be.ifosup.glvp.models.ProductDTO;
 import be.ifosup.glvp.services.ProductService;
 
+import java.sql.Array;
 import java.util.*;
 
 
@@ -44,14 +45,22 @@ public class ProductServiceImpl implements ProductService {
         this.subcatRepository=subcatRepository;
     }
 
+
+
+
     @Override
     public ProductDTO create(ProductForm productForm) {
+
+
         Product entity = Product.builder()
                 .product(productForm.getProductname())
                 .rayon(productForm.getRayon())
                 .peremption(productForm.getPeremption())
                 .sub_name(subcatRepository.findById(productForm.getId_subfk()).orElse(null))
+<<<<<<< HEAD
 //                .stat_name(statutRepository.findById(productForm.getId_statfk()).orElse((null)))
+=======
+>>>>>>> Feature3
                 .stat_name(statutRepository.findById(1))
                 .price(productForm.getPrice())
                 .quantities(productForm.getQuantities())
@@ -112,6 +121,23 @@ public class ProductServiceImpl implements ProductService {
                 .build();
 
         return productDTO;
+    }
+    @Override
+    public Set<ProductDTO>getByCategory(long id){
+        Set<Product> entities = new HashSet<>(productRepository.findAllById_subfk(id));
+        return ToModel.getProductsFromEntities(entities);
+    }
+
+    @Override
+    public Set<ProductDTO>getBysubCategory(long id){
+        Set<Product> entities = new HashSet<>(productRepository.findAllById_subcatfk(id));
+        return ToModel.getProductsFromEntities(entities);
+    }
+
+    @Override
+    public Set<ProductDTO>getBystatut(long id){
+        Set<Product> entities = new HashSet<>(productRepository.findAllById_statfk(id));
+        return ToModel.getProductsFromEntities(entities);
     }
 
     @Override
