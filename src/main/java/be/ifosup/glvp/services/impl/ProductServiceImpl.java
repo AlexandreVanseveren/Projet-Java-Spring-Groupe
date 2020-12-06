@@ -2,6 +2,7 @@ package be.ifosup.glvp.services.impl;
 
 
 import be.ifosup.glvp.entities.Product;
+import be.ifosup.glvp.entities.Statut;
 import be.ifosup.glvp.forms.ProductForm;
 import be.ifosup.glvp.helpers.ToModel;
 import be.ifosup.glvp.repositories.ProductRepository;
@@ -10,6 +11,8 @@ import be.ifosup.glvp.repositories.SubcatRepository;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 
@@ -54,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
                 .rayon(productForm.getRayon())
                 .peremption(productForm.getPeremption())
                 .sub_name(subcatRepository.findById(productForm.getId_subfk()).orElse(null))
+//                .stat_name(statutRepository.findById(productForm.getId_statfk()).orElse((null)))
                 .stat_name(statutRepository.findById(1))
                 .price(productForm.getPrice())
                 .quantities(productForm.getQuantities())
@@ -62,6 +66,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.save(entity);
         return ToModel.getProductFromEntity(product);
     }
+
     @Override
     public ProductDTO update(ProductForm productForm) {
         Product entity = Product.builder()
@@ -99,7 +104,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO getprodname(String prodname) {
-        Product product = productRepository.findByProduct(prodname); //recherche en fonction du username
+        Product product = productRepository.findByProduct(prodname);
         //Constructeur d'objet
         ProductDTO productDTO =ProductDTO.builder()
                 .id(product.getId())

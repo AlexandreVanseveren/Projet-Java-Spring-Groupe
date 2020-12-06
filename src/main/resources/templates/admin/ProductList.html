@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<table class="table table-bordered table-striped table-sm" th:fragment="ProductList">
+    <thead class="thead-dark">
+    <tr>
+        <th class="col-login">Product Name</th>
+        <th class="col-last-name">Mise en Rayon</th>
+        <th class="col-first-name">Péremption</th>
+        <th class="col-first-name">Prix</th>
+        <th class="col-first-name">Catégorie</th>
+        <th class="col-first-name">Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.productname}"></td>
+        <td style="display:none" th:text="${product.productname}"></td>
+        <td th:text="${product.rayon}"></td>
+        <td style="display:none" th:text="${product.rayon}"></td>
+        <td th:text="${product.peremption}"></td>
+        <td style="display:none" th:text="${product.peremption}"></td>
+        <td th:text="${product.price}"></td>
+        <td style="display:none" th:text="${product.price}"></td>
+        <td th:text="${product.id_subfk.sub_name}"></td>
+        <td style="display:none" th:text="${product.id_subfk.sub_name}"></td>
+        <td th:style="${product.id_statfk.stat_name} == 'Périmé' ? 'background: red' : (${product.id_statfk.stat_name} == 'Rupture de stock' ? 'background: orange' : 'background : white')" th:text="${product.id_statfk.stat_name}"></td>
+        <td style="display:none" th:text="${product.id_statfk.stat_name}"></td>
+
+
+        <td class="action-button">
+            <!--                        <a th:href="@{'/users/user/' + ${user.id}}"   class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>-->
+
+            <button id="updtbtn" class="btn btn-sm btn-warning">Update Product</button>
+
+            <div id="ModalUpdate" class="modal">
+                <div th:replace="admin/UpdateModal :: UpdateModal"></div>
+            </div>
+
+<!--            <a th:href="@{'/admin/products/update/' + ${product.id}}" class="btn btn-sm btn-warning">Update User<i-->
+<!--                    class="far fa-edit"></i></a>-->
+
+            <a onclick="return confirm('Are you sure you want to delete ?') ;" th:href="@{'/admin/products/delete/' + ${product.id}}" class="btn btn-sm btn-danger">Delete
+                product<i class="far fa-trash-alt"></i></a>
+            <!--   onclick="confirmDelete([[${product.id}]],                      <th:block >-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+</html>

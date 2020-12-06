@@ -15,6 +15,7 @@ public interface ProductService {
     Set<ProductDTO> getBysubCategory(long Id);
     Set<ProductDTO> getBystatut(long Id);
     Set<ProductDTO> getAll();
+//    Set<ProductDTO> findAllProduct();
     ProductDTO getById(long id);
     void deleteById(long id);
     ProductDTO create(ProductForm productform);

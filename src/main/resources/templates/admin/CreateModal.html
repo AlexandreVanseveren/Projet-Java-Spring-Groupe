@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <div class="vertical-alignment-helper" th:fragment="CreateModal">
+        <div class="modal-dialog vertical-align-center">
+            <!--                     Modal content-->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form th:action="@{/admin/product/create}" method="post" id="form_id" th:onsubmit="return validateForm()" th:object="${productform}">
+                    <div th:replace="admin/CreateProduct.html :: CreateProduct"></div> <!-- Call of VALIDATEFORM -->
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</html>

@@ -2,9 +2,7 @@ package be.ifosup.glvp.controller.admin;
 
 import be.ifosup.glvp.forms.ProductForm;
 import be.ifosup.glvp.forms.UserForm;
-import be.ifosup.glvp.models.ProductDTO;
-import be.ifosup.glvp.models.StatutDTO;
-import be.ifosup.glvp.models.SubcatDTO;
+import be.ifosup.glvp.models.*;
 import be.ifosup.glvp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 //Importation des services, modeles nécessaires pour les objets
-import be.ifosup.glvp.models.UserDTO;
 
 import java.util.Set;
 
@@ -62,19 +59,19 @@ public class AdminController {
     public String GetStudent(@PathVariable("id") int id, Model model) {
         ProductDTO product = productService.getById(id);
         model.addAttribute("product", product);
-        return "students/studentUpdate";
+        return "admin/productlist";
     }
+
     @PostMapping("/product/update")
     public String UpdateStudent(@ModelAttribute("product") ProductForm productForm) {
         productService.update(productForm);
-        return "redirect:/students/list";
+        return "redirect:/admin/produclist";
     }
 
     @GetMapping("/product/create")
     public String SetProduct(Model model) {
         ProductForm productForm = new ProductForm();
         model.addAttribute("productform", productForm);
-
         return "admin/users";
     }
 
@@ -123,18 +120,31 @@ public class AdminController {
         return "admin/product";
     }
 
+
     @GetMapping("/productlist")
     public String listProducts(Model model) {
+
         ProductForm productForm1 = new ProductForm();
         model.addAttribute("productform", productForm1);
         // get users from db
-        Set<ProductDTO> products = productService.getAll();
         // add to the spring model
-        model.addAttribute("products", products);
-         Set<SubcatDTO> subcat = subcatService.getAll();
+         Set<ProductDTO> products = productService.getAll();
+         model.addAttribute("products", products);
          // add to the spring model
+         Set<SubcatDTO> subcat = subcatService.getAll();
          model.addAttribute("subcat", subcat);
+         // add to the spring model
          Set<StatutDTO> status = statutService.getAll();
+         model.addAttribute("status", status);
+         // add to the spring model
+         Set<CategoryDTO> category = categoryService.getAll();
+         model.addAttribute("category", category);
+//         System.out.println(subcat);
+//         System.out.println(status);
+//         System.out.println(products);
+//         System.out.println(category);
+         model.addAttribute("subcat", subcat);
+//         Set<StatutDTO> status = statutService.getAll();
          Set<ProductDTO> pr1 = productService.getByCategory(1);
          Set<ProductDTO> pr2 = productService.getBysubCategory(1);
          Set<ProductDTO> pr3 = productService.getBystatut(2);
@@ -144,6 +154,7 @@ public class AdminController {
 //         System.out.println(subcat);
 //         System.out.println(status);
 //         System.out.println(products);
+
         return "admin/product";
     }
 
