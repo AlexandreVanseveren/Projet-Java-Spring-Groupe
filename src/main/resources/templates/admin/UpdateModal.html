@@ -6,7 +6,7 @@
         <!--                     Modal content-->
         <div class="modal-content">
             <span class="updtclose">&times;</span>
-            <form th:action="@{'/admin/products/update/' + ${product.id}}" method="post" id="form_id" th:onsubmit="return validateForm()" th:object="${productform}">
+            <form th:action="@{'/admin/product/update/'}" method="post" id="form_id"  th:object="${productform}">
                 <div th:replace="admin/UpdateProduct.html :: UpdateProduct"></div> <!-- Call of VALIDATEFORM -->
             </form>
         </div>
@@ -15,3 +15,6 @@
 </div>
 
 </html>
+
+<!--+ ${product.id}-->
+<!--th:onsubmit="return validateForm()"-->

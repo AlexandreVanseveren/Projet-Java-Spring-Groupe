@@ -7,30 +7,62 @@
         <th class="col-last-name">Mise en Rayon</th>
         <th class="col-first-name">Péremption</th>
         <th class="col-first-name">Prix</th>
+        <th class="col-first-name">Quantitées</th>
         <th class="col-first-name">Catégorie</th>
         <th class="col-first-name">Statut</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="product : ${products}">
-        <td th:text="${product.productname}"></td>
-        <td style="display:none" th:text="${product.productname}"></td>
-        <td th:text="${product.rayon}"></td>
-        <td style="display:none" th:text="${product.rayon}"></td>
-        <td th:text="${product.peremption}"></td>
-        <td style="display:none" th:text="${product.peremption}"></td>
-        <td th:text="${product.price}"></td>
-        <td style="display:none" th:text="${product.price}"></td>
-        <td th:text="${product.id_subfk.sub_name}"></td>
-        <td style="display:none" th:text="${product.id_subfk.sub_name}"></td>
-        <td th:style="${product.id_statfk.stat_name} == 'Périmé' ? 'background: red' : (${product.id_statfk.stat_name} == 'Rupture de stock' ? 'background: orange' : 'background : white')" th:text="${product.id_statfk.stat_name}"></td>
-        <td style="display:none" th:text="${product.id_statfk.stat_name}"></td>
+        <td style="display: none">
+            <input style="display: none" class="idprod" th:value="${product.id}">
+        </td>
+        <td>
+            <span class="prodname" th:text="${product.productname}"></span>
+            <input style="display:none" class="prodnameedit" th:value="${product.productname}" required>
+        </td>
+        <td>
+            <span class="prodrayon" th:text="${product.rayon}"></span>
+            <input type="date" style="display:none" class="prodrayonedit" th:value="${product.rayon}" required>
+        </td>
+        <td>
+            <span class="prodperemp" th:text="${product.peremption}"></span>
+            <input type="date" style="display:none" class="prodperempedit" th:value="${product.peremption}" required>
+        </td>
+        <td>
+            <span class="prodprice" th:text="${product.price}"></span>
+            <input type="number" min="0" step="0.01" style="display:none" class="prodpriceedit" th:value="${product.price}" required>
+        </td>
+        <td>
+            <span class="prodnb" th:text="${product.quantities}"></span>
+            <input type="number" min="1" max="500" style="display:none" class="prodnbedit" th:value="${product.quantities}" required>
+        </td>
+        <td>
+            <span class="sub" th:text="${product.id_subfk.sub_name}"></span>
+            <input style="display: none" class="subedit" th:value="${product.id_subfk.id_sub}">
+<!--            <label for="categorie">Categorie</label>-->
+<!--            <select id="categorie" class="form-control" required>-->
+<!--                <option th:each="cat : ${subcat}" th:value="${cat.id}"-->
+<!--                        th:text="${product.id_subfk.sub_name}"></option>-->
+<!--&lt;!&ndash;                th:field="*{id_subfk}"&ndash;&gt;-->
+<!--            </select>-->
+<!--            <input style="display:none" class="subedit" th:value="${product.id_subfk.sub_name}">-->
+        </td>
+
+
+        <td>
+            <span class="stat" th:style="${product.id_statfk.stat_name} == 'Périmé' ? 'background: red' : (${product.id_statfk.stat_name} == 'Rupture de stock' ? 'background: orange' : 'background : white')" th:text="${product.id_statfk.stat_name}"></span>
+            <input style="display: none" class="statedit" th:value="${product.id_statfk.id_stat}">
+        </td>
+
 
 
         <td class="action-button">
             <!--                        <a th:href="@{'/users/user/' + ${user.id}}"   class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>-->
 
-            <button id="updtbtn" class="btn btn-sm btn-warning">Update Product</button>
+            <button class="updtbtn">Update Product</button>
+            <button style="display: none" class="saveprod">Save Product</button>
+            <button style="display: none" class="cancel">Cancel</button>
 
             <div id="ModalUpdate" class="modal">
                 <div th:replace="admin/UpdateModal :: UpdateModal"></div>

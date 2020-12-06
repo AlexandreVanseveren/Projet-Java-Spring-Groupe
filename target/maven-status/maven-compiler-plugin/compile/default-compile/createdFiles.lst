@@ -6,9 +6,12 @@ be\ifosup\glvp\services\impl\SubcatServiceImpl.class
 be\ifosup\glvp\controller\user\UserController.class
 be\ifosup\glvp\models\SubcatDTO.class
 be\ifosup\glvp\models\StatutDTO.class
+be\ifosup\glvp\repositories\CategoryRepository.class
 be\ifosup\glvp\constants\RoleEnum.class
 be\ifosup\glvp\entities\Subcat.class
+be\ifosup\glvp\models\CategoryDTO$CategoryDTOBuilder.class
 db\migration\V1_0_6__UpdProducts.class
+be\ifosup\glvp\services\CategoryService.class
 be\ifosup\glvp\forms\ProductForm.class
 be\ifosup\glvp\config\WebSecurityConfig.class
 db\migration\V1_0_2__AddCategories.class
@@ -21,6 +24,7 @@ db\migration\V1_0_5__AddProducts.class
 be\ifosup\glvp\helpers\ToModel.class
 be\ifosup\glvp\entities\User.class
 be\ifosup\glvp\services\impl\UsersServiceImpl.class
+be\ifosup\glvp\models\CategoryDTO.class
 be\ifosup\glvp\models\SubcatDTO$SubcatDTOBuilder.class
 be\ifosup\glvp\config\CustomAuthentificationSuccessHandler.class
 be\ifosup\glvp\models\UserDTO.class
@@ -31,6 +35,7 @@ be\ifosup\glvp\services\impl\UsersDetailsServiceImpl.class
 db\migration\V1_0_4__AddSub.class
 db\migration\V1_0_7__FillDB.class
 be\ifosup\glvp\repositories\ProductRepository.class
+be\ifosup\glvp\services\impl\CategoryServiceImpl.class
 be\ifosup\glvp\services\StatutService.class
 be\ifosup\glvp\repositories\StatutRepository.class
 be\ifosup\glvp\controller\LoginController.class

@@ -41,13 +41,12 @@ public class AdminController {
     }
 
 
-    @GetMapping("/users/create")
-    public String SetUser(Model model) {
-        UserForm userForm = new UserForm();
-        model.addAttribute("userform", userForm);
-
-        return "admin/users";
-    }
+//    @GetMapping("/users/create")
+//    public String SetUser(Model model) {
+//        UserForm userForm = new UserForm();
+//        model.addAttribute("userform", userForm);
+//        return "admin/users";
+//    }
 
     @PostMapping("/users/create")
     public String CreateUser(@ModelAttribute("userform") UserForm userForm) {
@@ -55,25 +54,26 @@ public class AdminController {
         return "redirect:/admin/userlist";
     }
 
-    @GetMapping("/product/update/{id}")
-    public String GetStudent(@PathVariable("id") int id, Model model) {
-        ProductDTO product = productService.getById(id);
-        model.addAttribute("product", product);
-        return "admin/productlist";
-    }
+//    @GetMapping("/product/update/{id}")
+//    public String GetProduct(@PathVariable("id") int id, Model model) {
+//        ProductDTO product = productService.getById(id);
+//        model.addAttribute("product", product);
+//        System.out.println(product);
+//        return "product/update";
+//    }
 
     @PostMapping("/product/update")
-    public String UpdateStudent(@ModelAttribute("product") ProductForm productForm) {
+    public String UpdateProduct(@ModelAttribute("product") ProductForm productForm) {
         productService.update(productForm);
-        return "redirect:/admin/produclist";
+        return "redirect:/admin/productlist";
     }
 
-    @GetMapping("/product/create")
-    public String SetProduct(Model model) {
-        ProductForm productForm = new ProductForm();
-        model.addAttribute("productform", productForm);
-        return "admin/users";
-    }
+//    @GetMapping("/product/create")
+//    public String SetProduct(Model model) {
+//        ProductForm productForm = new ProductForm();
+//        model.addAttribute("productform", productForm);
+//        return "admin/users";
+//    }
 
     @PostMapping("/product/create")
     public String CreateProduct(@ModelAttribute("productform") ProductForm productForm) {
