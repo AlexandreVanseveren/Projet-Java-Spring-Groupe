@@ -41,13 +41,14 @@ public class AdminController {
     }
 
 
-    @GetMapping("/users/create")
-    public String SetUser(Model model) {
-        UserForm userForm = new UserForm();
-        model.addAttribute("userform", userForm);
-
-        return "admin/users";
-    }
+//    @GetMapping("/users/create")
+//    public String SetUser(Model model) {
+//        UserForm userForm = new UserForm();
+//        System.out.println(userForm);
+//        model.addAttribute("userform", userForm);
+//
+//        return "admin/users";
+//    }
 
     @PostMapping("/users/create")
     public String CreateUser(@ModelAttribute("userform") UserForm userForm) {
@@ -59,14 +60,12 @@ public class AdminController {
     public String GetProduct(@PathVariable("id") int id, Model model) {
         ProductDTO product = productService.getById(id);
         model.addAttribute("product", product);
-        System.out.println(product);
         return "admin/productlist/update";
     }
 
     @PostMapping("/product/update")
     public String UpdateProduct(@ModelAttribute("product") ProductForm productForm) {
         productService.update(productForm);
-        System.out.println("hello");
         return "redirect:/admin/productlist";
     }
 

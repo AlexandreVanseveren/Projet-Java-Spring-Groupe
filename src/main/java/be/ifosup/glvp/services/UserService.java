@@ -13,6 +13,6 @@ public interface UserService {
     Set<UserDTO> getAll();
     UserDTO getById(long id);
     void deleteById(long id);
-    UserDTO create(UserForm userform);
+    void create(UserForm userform);
 }
 

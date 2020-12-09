@@ -18,6 +18,6 @@ public interface ProductService {
 //    Set<ProductDTO> findAllProduct();
     ProductDTO getById(long id);
     void deleteById(long id);
-    ProductDTO create(ProductForm productform);
-    ProductDTO update(ProductForm productForm);
+    void create(ProductForm productform);
+    void update(ProductForm productForm);
 }
