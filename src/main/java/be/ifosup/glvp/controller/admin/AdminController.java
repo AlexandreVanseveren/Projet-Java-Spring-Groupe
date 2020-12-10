@@ -5,10 +5,9 @@ import be.ifosup.glvp.forms.UserForm;
 import be.ifosup.glvp.models.*;
 import be.ifosup.glvp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 //Importation des services, modeles nécessaires pour les objets
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
 /**
@@ -38,6 +39,7 @@ public class AdminController {
         this.subcatService = subcatService;
         this.statutService = statutService;
         this.categoryService= categoryService;
+
     }
 
 
@@ -93,12 +95,8 @@ public class AdminController {
     public String adminPage(Model model) { //
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-
         UserDTO user = usersService.getUser(username); //Création de l'objet user en fonction du login entré
-
-
         model.addAttribute("user", user);
-
         return "admin/index";
     }
 
@@ -123,7 +121,6 @@ public class AdminController {
 
     @GetMapping("/productlist")
     public String listProducts(Model model) {
-
         ProductForm productForm1 = new ProductForm();
         model.addAttribute("productform", productForm1);
         // get users from db
@@ -148,12 +145,12 @@ public class AdminController {
          Set<ProductDTO> pr1 = productService.getByCategory(1);
          Set<ProductDTO> pr2 = productService.getBysubCategory(1);
          Set<ProductDTO> pr3 = productService.getBystatut(2);
-//
-//         add to the spring model
+
        model.addAttribute("status", status);
 //         System.out.println(subcat);
 //         System.out.println(status);
 //         System.out.println(products);
+
 
         return "admin/product";
     }

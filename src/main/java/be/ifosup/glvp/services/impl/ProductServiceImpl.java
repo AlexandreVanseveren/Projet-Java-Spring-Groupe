@@ -2,24 +2,20 @@ package be.ifosup.glvp.services.impl;
 
 
 import be.ifosup.glvp.entities.Product;
-import be.ifosup.glvp.entities.Statut;
 import be.ifosup.glvp.forms.ProductForm;
 import be.ifosup.glvp.helpers.ToModel;
 import be.ifosup.glvp.repositories.ProductRepository;
 import be.ifosup.glvp.repositories.StatutRepository;
 import be.ifosup.glvp.repositories.SubcatRepository;
-import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 
 import be.ifosup.glvp.models.ProductDTO;
 import be.ifosup.glvp.services.ProductService;
 
-import java.sql.Array;
+import java.sql.Date;
 import java.util.*;
 
 
@@ -142,4 +138,5 @@ public class ProductServiceImpl implements ProductService {
         Set<Product> entities = new HashSet<>(productRepository.findAll());
         return ToModel.getProductsFromEntities(entities);
     }
+
 }

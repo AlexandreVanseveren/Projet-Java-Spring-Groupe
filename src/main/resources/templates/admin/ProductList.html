@@ -35,15 +35,17 @@
         </td>
         <td>
             <span class="prodnb" th:text="${product.quantities}"></span>
-            <input type="number" min="1" max="500" style="display:none" class="prodnbedit" th:value="${product.quantities}" required>
+            <input type="number" min="0" max="500" style="display:none" class="prodnbedit" th:value="${product.quantities}" required>
         </td>
         <td>
             <span class="sub" th:text="${product.id_subfk.sub_name}"></span>
             <input style="display: none" class="subedit" th:value="${product.id_subfk.id_sub}">
 <!--            <label for="categorie">Categorie</label>-->
+
+<!--&lt;!&ndash;           selected = true val par default&ndash;&gt;-->
 <!--            <select id="categorie" class="form-control" required>-->
 <!--                <option th:each="cat : ${subcat}" th:value="${cat.id}"-->
-<!--                        th:text="${product.id_subfk.sub_name}"></option>-->
+<!--                        th:text="${cat.subcat}"></option>-->
 <!--&lt;!&ndash;                th:field="*{id_subfk}"&ndash;&gt;-->
 <!--            </select>-->
 <!--            <input style="display:none" class="subedit" th:value="${product.id_subfk.sub_name}">-->

@@ -5,8 +5,7 @@ import be.ifosup.glvp.models.ProductDTO;
 import be.ifosup.glvp.forms.ProductForm;
 
 
-import java.sql.Array;
-import java.util.List;
+import java.sql.Date;
 import java.util.Set;
 
 public interface ProductService {
@@ -20,4 +19,5 @@ public interface ProductService {
     void deleteById(long id);
     ProductDTO create(ProductForm productform);
     ProductDTO update(ProductForm productForm);
+
 }

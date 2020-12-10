@@ -63,8 +63,7 @@ $('.updtbtn').on('click',function (event) {
     $(this).closest('tr').find('.saveprod').show();
     $(this).closest('tr').find('.cancel').show();
 
-    var test= $(this).parents('tr').find('.idprod').val();
-
+    // var test= $(this).parents('tr').find('.idprod').val();
     // $(this).parents('tr').find('.idprod').show();
 
     $(this).parents('tr').find('.prodnameedit').show();
@@ -77,7 +76,10 @@ $('.updtbtn').on('click',function (event) {
     $(this).parents('tr').find('.prodperemp').hide(); //{
 
     $(this).parents('tr').find('.prodpriceedit').show();
-    $(this).parents('tr').find('.prodprice').hide(); //{
+    $(this).parents('tr').find('.prodprice').hide(); //
+
+    $(this).parents('tr').find('.prodnbedit').show();
+    $(this).parents('tr').find('.prodnb').hide(); //{
 
     // $(this).parents('tr').find('.subedit').show();
     // $(this).parents('tr').find('.sub').hide(); //{
@@ -85,7 +87,6 @@ $('.updtbtn').on('click',function (event) {
     // alert (test);
 
 });
-
 
 
 $('.saveprod').on('click',function (event) {
@@ -117,6 +118,9 @@ $('.saveprod').on('click',function (event) {
     $(this).parents('tr').find('.prodpriceedit').hide();
     $(this).parents('tr').find('.prodprice').show(); //{
 
+    $(this).parents('tr').find('.prodnbedit').hide();
+    $(this).parents('tr').find('.prodnb').show(); //{
+
 
     $.ajax({
         url: 'product/update/',
@@ -136,8 +140,6 @@ $('.saveprod').on('click',function (event) {
             console.log(data);
         }
     })
-
-
 });
 
 
@@ -159,10 +161,10 @@ $('.cancel').on('click',function (event) {
     $(this).parents('tr').find('.prodpriceedit').hide();
     $(this).parents('tr').find('.prodprice').show(); //{
 
+    $(this).parents('tr').find('.prodnbedit').hide();
+    $(this).parents('tr').find('.prodnb').show(); //{
+
     // $(this).parents('tr').find('.subedit').hide();
     // $(this).parents('tr').find('.sub').show(); //{
 
-
 });
-
-
