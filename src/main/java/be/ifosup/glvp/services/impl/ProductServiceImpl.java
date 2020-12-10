@@ -66,6 +66,8 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.save(entity);
     }
 
+
+
     @Override
     public void update(ProductForm productForm) {
         Product entity = Product.builder()
@@ -90,6 +92,15 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    @Override
+    public void reduction (ProductForm productForm, int reduction){
+
+    }
+
+    @Override
+    public void ajusterPrix (ProductForm productForm){
+
+    }
 
     @Override
     public ProductDTO getById(long id) {

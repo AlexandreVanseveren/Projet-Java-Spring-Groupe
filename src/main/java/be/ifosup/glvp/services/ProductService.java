@@ -20,4 +20,6 @@ public interface ProductService {
     void deleteById(long id);
     void create(ProductForm productform);
     void update(ProductForm productForm);
+    void reduction(ProductForm productForm, int reduction);
+    void ajusterPrix(ProductForm productForm);
 }

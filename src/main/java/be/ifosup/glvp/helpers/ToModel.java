@@ -63,6 +63,15 @@ public class ToModel {
                 .build();
         return productD;
     }
+    public static StatutDTO getStatutFromEntity(Statut statut) {
+        StatutDTO statutDTO = StatutDTO
+                .builder()
+                .id(statut.getId_stat())
+                .stat_name(statut.getStat_name())
+                .build();
+        return statutDTO;
+    }
+
 
     public static Set<SubcatDTO> getSubcatsFromEntities(Set<Subcat> entities) {
         return entities.stream()
