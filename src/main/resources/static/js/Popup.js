@@ -15,11 +15,11 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
     modalcreate.style.display = "block";
-}
+};
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modalcreate.style.display = "none";
-}
+};
 
 // updtbtn.onclick = function() {
 //     modalupdate.style.display = "block";
@@ -36,7 +36,7 @@ window.onclick = function(event) {
     if (event.target === modalcreate) {
         modalcreate.style.display = "none";
     }
-}
+};
 
 
 function validateForm() {
@@ -91,9 +91,6 @@ $('.updtbtn').on('click',function (event) {
 
 $('.saveprod').on('click',function (event) {
     event.preventDefault();
-    $(this).hide();
-    $(this).closest('tr').find('.updtbtn').show();
-    $(this).closest('tr').find('.cancel').hide();
     var id = $(this).parents('tr').find('.idprod').val() ;
     var prodname = $(this).parents('tr').find('.prodnameedit').val() ;
     var rayon = $(this).parents('tr').find('.prodrayonedit').val() ;
@@ -103,45 +100,61 @@ $('.saveprod').on('click',function (event) {
     var price = $(this).parents('tr').find('.prodpriceedit').val() ;
     var quantities = $(this).parents('tr').find('.prodnbedit').val() ;
 
-    $(this).parents('tr').find('.prodnameedit').hide();
-    $(this).parents('tr').find('.prodname').show();
+
+    if((prodname === "") || (rayon==="") || (peremption==="") || (subfk==="") || (statfk==="") || (price==="") || (quantities==="") ){
+        alert("A Field is Empty")
+
+    } else {
+        console.log("Found it");
+        $(this).hide();
+        $(this).closest('tr').find('.updtbtn').show();
+        $(this).closest('tr').find('.cancel').hide();
 
 
-    $(this).parents('tr').find('.prodrayonedit').hide();
-    $(this).parents('tr').find('.prodrayon').show();
+        $(this).parents('tr').find('.prodnameedit').hide();
+        $(this).parents('tr').find('.prodname').show();
+        $(this).parents('tr').find('.prodname').text($(this).parents('tr').find('.prodnameedit').val()) ;
 
 
-    $(this).parents('tr').find('.prodperempedit').hide();
-    $(this).parents('tr').find('.prodperemp').show(); //{
+        $(this).parents('tr').find('.prodrayonedit').hide();
+        $(this).parents('tr').find('.prodrayon').show();
+        $(this).parents('tr').find('.prodrayon').text($(this).parents('tr').find('.prodrayonedit').val()) ;
 
 
-    $(this).parents('tr').find('.prodpriceedit').hide();
-    $(this).parents('tr').find('.prodprice').show(); //{
+        $(this).parents('tr').find('.prodperempedit').hide();
+        $(this).parents('tr').find('.prodperemp').show(); //{
+        $(this).parents('tr').find('.prodperemp').text($(this).parents('tr').find('.prodperempedit').val()) ;
 
-    $(this).parents('tr').find('.prodnbedit').hide();
-    $(this).parents('tr').find('.prodnb').show(); //{
+        $(this).parents('tr').find('.prodpriceedit').hide();
+        $(this).parents('tr').find('.prodprice').show(); //{
+        $(this).parents('tr').find('.prodprice').text($(this).parents('tr').find('.prodpriceedit').val()) ;
+
+        $(this).parents('tr').find('.prodnbedit').hide();
+        $(this).parents('tr').find('.prodnb').show(); //{
+        $(this).parents('tr').find('.prodnb').text($(this).parents('tr').find('.prodnbedit').val()) ;
 
 
-    $.ajax({
-        url: 'product/update/',
-        type:'post',
-        data  : {
-            id : id,
-            productname : prodname ,
-            rayon : rayon,
-            peremption : peremption,
-            id_subfk : subfk ,
-            id_statfk : statfk,
-            price : price ,
-            quantities : quantities,
-        },
-        success:function(data){
-            console.log("Updated success");
-            console.log(data);
-        }
-    })
+        $.ajax({
+            url: 'product/update/',
+            type:'post',
+            data  : {
+                id : id,
+                productname : prodname ,
+                rayon : rayon,
+                peremption : peremption,
+                id_subfk : subfk ,
+                id_statfk : statfk,
+                price : price ,
+                quantities : quantities,
+            },
+            success:function(data){
+                console.log("Updated success");
+                console.log(data);
+            }
+        })
+    }
+
 });
-
 
 $('.cancel').on('click',function (event) {
     event.preventDefault();
@@ -151,18 +164,23 @@ $('.cancel').on('click',function (event) {
 
     $(this).parents('tr').find('.prodnameedit').hide();
     $(this).parents('tr').find('.prodname').show();
+    $(this).parents('tr').find('.prodnameedit').val($(this).parents('tr').find('.prodname').text()) ;
 
     $(this).parents('tr').find('.prodrayonedit').hide();
     $(this).parents('tr').find('.prodrayon').show();
+    $(this).parents('tr').find('.prodrayonedit').val($(this).parents('tr').find('.prodrayon').text()) ;
 
     $(this).parents('tr').find('.prodperempedit').hide();
     $(this).parents('tr').find('.prodperemp').show(); //{
+    $(this).parents('tr').find('.prodperempedit').val($(this).parents('tr').find('.prodperemp').text()) ;
 
     $(this).parents('tr').find('.prodpriceedit').hide();
     $(this).parents('tr').find('.prodprice').show(); //{
+    $(this).parents('tr').find('.prodpriceedit').val($(this).parents('tr').find('.prodprice').text()) ;
 
     $(this).parents('tr').find('.prodnbedit').hide();
     $(this).parents('tr').find('.prodnb').show(); //{
+    $(this).parents('tr').find('.prodnbedit').val($(this).parents('tr').find('.prodnb').text()) ;
 
     // $(this).parents('tr').find('.subedit').hide();
     // $(this).parents('tr').find('.sub').show(); //{
