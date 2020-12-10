@@ -6,22 +6,22 @@
 
 <body>
 <h1>Admin page</h1>
-<button type="button" onclick="javascript:history.back()">Back</button>
+<!--<button type="button" onclick="javascript:history.back()">Back</button>-->
 
 <div class="blur2"></div>
 <div class="containers">
     <div class="navbar" th:replace="static/adminnavbar.html :: navbar"></div>
-    <div class="sidebar">
-        <p class="nav-item dropdown" th:each="cat : ${category}">
-            <a class="nav-link dropdown-toggle" th:href="@{'/admin/product/' + ${cat.cat_name}}" id="navbardrop" data-toggle="dropdown"
-               th:text="${cat.cat_name}">
-            </a>
-        <div class="dropdown-menu" th:each="sub : ${subcat}">
-            <a class="dropdown-item" href="#" th:text="${sub.id_catfk}"></a>
-        </div>
-<!--            <a th:text="${cat.cat_name}" th:href="@{'/admin/product/' + ${cat.cat_name}}"></a></p>-->
-        </p>
-    </div>
+<!--    <div class="sidebar">-->
+<!--        <p class="nav-item dropdown" th:each="cat : ${category}">-->
+<!--            <a class="nav-link dropdown-toggle" th:href="@{'/admin/product/' + ${cat.cat_name}}" id="navbardrop" data-toggle="dropdown"-->
+<!--               th:text="${cat.cat_name}">-->
+<!--            </a>-->
+<!--        <div class="dropdown-menu" th:each="sub : ${subcat}">-->
+<!--            <a class="dropdown-item" href="#" th:text="${sub.id_catfk}"></a>-->
+<!--        </div>-->
+<!--&lt;!&ndash;            <a th:text="${cat.cat_name}" th:href="@{'/admin/product/' + ${cat.cat_name}}"></a></p>&ndash;&gt;-->
+<!--        </p>-->
+<!--    </div>-->
 
 
     <!-- Trigger/Open The Modal -->

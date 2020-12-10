@@ -35,7 +35,7 @@
         </td>
         <td>
             <span class="prodnb" th:text="${product.quantities}"></span>
-            <input type="number" min="0" max="500" style="display:none" class="prodnbedit" th:value="${product.quantities}" required>
+            <input type="number" min="1" max="500" style="display:none" class="prodnbedit" th:value="${product.quantities}" required>
         </td>
         <td>
             <span class="sub" th:text="${product.id_subfk.sub_name}"></span>
@@ -53,7 +53,7 @@
 
 
         <td>
-            <span class="stat" th:style="${product.id_statfk.stat_name} == 'Périmé' ? 'background: red' : (${product.id_statfk.stat_name} == 'Rupture de stock' ? 'background: orange' : 'background : white')" th:text="${product.id_statfk.stat_name}"></span>
+            <span class="stat" th:style="${product.id_statfk.stat_name} == 'Périmé' ? 'background: red' : (${product.id_statfk.stat_name} == 'Rupture de stock' ? 'background: orange' : (${product.id_statfk.stat_name} == 'En promo' ? 'background: cyan' : 'background : green'))" th:text="${product.id_statfk.stat_name}"></span>
             <input style="display: none" class="statedit" th:value="${product.id_statfk.id_stat}">
         </td>
 
