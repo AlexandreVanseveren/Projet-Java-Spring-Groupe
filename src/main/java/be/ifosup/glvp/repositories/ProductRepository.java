@@ -35,8 +35,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 //    @Query(value = "SELECT '*' FROM products order by peremption DESC")
 //    List<Product> findAllProduct();
-
-
     Product findByProduct(String product);
     Product findById(long id);
     @Query(nativeQuery =true, value = "SELECT * FROM products INNER JOIN subcat ON products.id_subfk = subcat.id_sub where id_catfk = (:fk)")
@@ -45,12 +43,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllById_subcatfk(@Param("fk") Long id_subfk);
     @Query(nativeQuery =true, value = "SELECT * FROM products where id_statfk = (:fk)")
     List<Product> findAllById_statfk(@Param("fk") Long id_statfk);
-<<<<<<< HEAD
-=======
 //    @Query()
 //    void updatePrix(@Param("prix") int prix, @Param("nom") String nom);
 //    @Query()
 //    void promotion(@Param("reduction")int reduction,@Param("nom") String nom);
->>>>>>> Feature3
+
 
 }

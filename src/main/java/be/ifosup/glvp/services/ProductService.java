@@ -17,14 +17,11 @@ public interface ProductService {
 //    Set<ProductDTO> findAllProduct();
     ProductDTO getById(long id);
     void deleteById(long id);
-<<<<<<< HEAD
-    ProductDTO create(ProductForm productform);
-    ProductDTO update(ProductForm productForm);
-
-=======
+//    ProductDTO create(ProductForm productform);
+//    ProductDTO update(ProductForm productForm);
     void create(ProductForm productform);
     void update(ProductForm productForm);
     void reduction(ProductForm productForm, int reduction);
     void ajusterPrix(ProductForm productForm);
->>>>>>> Feature3
+
 }

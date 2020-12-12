@@ -44,35 +44,22 @@ public class AdminController {
 
     }
 
-<<<<<<< HEAD
-
-//    @GetMapping("/users/create")
-//    public String SetUser(Model model) {
-//        UserForm userForm = new UserForm();
-//        model.addAttribute("userform", userForm);
-//        return "admin/users";
-//    }
-=======
 //    @GetMapping("/users/create")
 //    public String SetUser(Model model) {
 //        UserForm userForm = new UserForm();
 //        System.out.println(userForm);
 //        model.addAttribute("userform", userForm);
-//
 //        return "admin/users";
 //    }
 
-
 //    on creer l'user
->>>>>>> Feature3
-
     @PostMapping("/users/create")
     public String CreateUser(@ModelAttribute("userform") UserForm userForm) {
         usersService.create(userForm);
         return "redirect:/admin/userlist";
     }
 
-<<<<<<< HEAD
+
 //    @GetMapping("/product/update/{id}")
 //    public String GetProduct(@PathVariable("id") int id, Model model) {
 //        ProductDTO product = productService.getById(id);
@@ -80,14 +67,14 @@ public class AdminController {
 //        System.out.println(product);
 //        return "product/update";
 //    }
-=======
+
     @GetMapping("/product/update/{id}")
     public String GetProduct(@PathVariable("id") int id, Model model) {
         ProductDTO product = productService.getById(id);
         model.addAttribute("product", product);
         return "admin/productlist/update";
     }
->>>>>>> Feature3
+
 
     @PostMapping("/product/update")
     public String UpdateProduct(@ModelAttribute("product") ProductForm productForm) {
@@ -179,16 +166,13 @@ public class AdminController {
 //         System.out.println(category);
          model.addAttribute("subcat", subcat);
 //         Set<StatutDTO> status = statutService.getAll();
-         Set<ProductDTO> pr1 = productService.getByCategory(1);
-         Set<ProductDTO> pr2 = productService.getBysubCategory(1);
-         Set<ProductDTO> pr3 = productService.getBystatut(2);
-
-       model.addAttribute("status", status);
+//         Set<ProductDTO> pr1 = productService.getByCategory(1);
+//         Set<ProductDTO> pr2 = productService.getBysubCategory(1);
+//         Set<ProductDTO> pr3 = productService.getBystatut(2);
+         model.addAttribute("status", status);
 //         System.out.println(subcat);
 //         System.out.println(status);
 //         System.out.println(products);
-
-
         return "admin/product";
     }
 

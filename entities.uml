@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>be.ifosup.glvp.entities</OriginalElement>
+  <nodes>
+    <node x="584.5" y="517.0">be.ifosup.glvp.entities.User.UserBuilder</node>
+    <node x="213.77777777777783" y="276.0">be.ifosup.glvp.entities.Statut</node>
+    <node x="-310.7222222222223" y="585.2222222222221">be.ifosup.glvp.entities.Product.ProductBuilder</node>
+    <node x="18.33333333333337" y="667.5555555555555">be.ifosup.glvp.entities.Product</node>
+    <node x="-3.3333333333332575" y="-15.555555555555557">be.ifosup.glvp.entities.Category</node>
+    <node x="437.0" y="0.0">be.ifosup.glvp.entities.User</node>
+    <node x="0.0" y="275.0">be.ifosup.glvp.entities.Subcat</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="be.ifosup.glvp.entities.Product" target="be.ifosup.glvp.entities.Statut">
+      <point x="95.5" y="-200.5" />
+      <point x="291.5" y="547.0" />
+      <point x="299.0" y="547.0" />
+      <point x="0.0" y="112.5" />
+    </edge>
+    <edge source="be.ifosup.glvp.entities.Product" target="be.ifosup.glvp.entities.Subcat">
+      <point x="-95.5" y="-200.5" />
+      <point x="100.5" y="547.0" />
+      <point x="93.0" y="547.0" />
+      <point x="0.0" y="123.5" />
+    </edge>
+    <edge source="be.ifosup.glvp.entities.User.UserBuilder" target="be.ifosup.glvp.entities.User">
+      <point x="0.0" y="-288.5" />
+      <point x="0.0" y="233.5" />
+    </edge>
+    <edge source="be.ifosup.glvp.entities.Subcat" target="be.ifosup.glvp.entities.Category">
+      <point x="0.0" y="-123.5" />
+      <point x="0.0" y="112.5" />
+    </edge>
+    <edge source="be.ifosup.glvp.entities.Product.ProductBuilder" target="be.ifosup.glvp.entities.Product">
+      <point x="0.0" y="-244.5" />
+      <point x="0.0" y="200.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="182.0" y="627.3333333333334" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

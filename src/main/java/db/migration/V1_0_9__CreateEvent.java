@@ -13,5 +13,7 @@ public class V1_0_9__CreateEvent extends BaseJavaMigration {
         statement.execute("CREATE EVENT perim ON SCHEDULE EVERY 30 SECOND DO update products set id_statfk=3 where peremption <= NOW() AND id_statfk <> 2");
         statement.execute("CREATE EVENT promo ON SCHEDULE EVERY 25 SECOND DO update products set price =price*0.8 ,id_statfk = 4 where datediff(peremption,NOW()) =2 and id_statfk= 1");
         statement.execute("CREATE EVENT rupture ON SCHEDULE EVERY 5 SECOND DO update products set id_statfk=2 where quantities = 0");
+        statement.execute("CREATE EVENT unperim ON SCHEDULE EVERY 20 SECOND DO update products set id_statfk=1 where peremption > NOW() AND id_statfk = 3");
+
     }
 }
