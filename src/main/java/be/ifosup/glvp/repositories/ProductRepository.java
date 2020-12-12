@@ -45,5 +45,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllById_subcatfk(@Param("fk") Long id_subfk);
     @Query(nativeQuery =true, value = "SELECT * FROM products where id_statfk = (:fk)")
     List<Product> findAllById_statfk(@Param("fk") Long id_statfk);
+<<<<<<< HEAD
+=======
+//    @Query()
+//    void updatePrix(@Param("prix") int prix, @Param("nom") String nom);
+//    @Query()
+//    void promotion(@Param("reduction")int reduction,@Param("nom") String nom);
+>>>>>>> Feature3
 
 }

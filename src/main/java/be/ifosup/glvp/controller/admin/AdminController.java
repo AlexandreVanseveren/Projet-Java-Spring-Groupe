@@ -25,11 +25,13 @@ import java.util.Set;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+//    On instancie les service
     private final UserService usersService;
     private final ProductService productService;
     private final SubcatService subcatService;
     private final StatutService statutService;
     private final CategoryService categoryService;
+
 
     @Autowired
     public AdminController(UserService usersService, ProductService productService, StatutService statutService,
@@ -42,6 +44,7 @@ public class AdminController {
 
     }
 
+<<<<<<< HEAD
 
 //    @GetMapping("/users/create")
 //    public String SetUser(Model model) {
@@ -49,6 +52,19 @@ public class AdminController {
 //        model.addAttribute("userform", userForm);
 //        return "admin/users";
 //    }
+=======
+//    @GetMapping("/users/create")
+//    public String SetUser(Model model) {
+//        UserForm userForm = new UserForm();
+//        System.out.println(userForm);
+//        model.addAttribute("userform", userForm);
+//
+//        return "admin/users";
+//    }
+
+
+//    on creer l'user
+>>>>>>> Feature3
 
     @PostMapping("/users/create")
     public String CreateUser(@ModelAttribute("userform") UserForm userForm) {
@@ -56,6 +72,7 @@ public class AdminController {
         return "redirect:/admin/userlist";
     }
 
+<<<<<<< HEAD
 //    @GetMapping("/product/update/{id}")
 //    public String GetProduct(@PathVariable("id") int id, Model model) {
 //        ProductDTO product = productService.getById(id);
@@ -63,6 +80,14 @@ public class AdminController {
 //        System.out.println(product);
 //        return "product/update";
 //    }
+=======
+    @GetMapping("/product/update/{id}")
+    public String GetProduct(@PathVariable("id") int id, Model model) {
+        ProductDTO product = productService.getById(id);
+        model.addAttribute("product", product);
+        return "admin/productlist/update";
+    }
+>>>>>>> Feature3
 
     @PostMapping("/product/update")
     public String UpdateProduct(@ModelAttribute("product") ProductForm productForm) {
@@ -118,6 +143,18 @@ public class AdminController {
         return "admin/product";
     }
 
+    @GetMapping("/Statutlist/{id}")
+    public String listStatut(Model model,@PathVariable("id") int id){
+        System.out.println("yop");
+        Set<ProductDTO> pr1 = productService.getBystatut(id);
+        StatutDTO statu = statutService.getById(id);
+        System.out.println(pr1);
+        model.addAttribute("statu",statu);
+        model.addAttribute("products",pr1);
+        String nomStatut = statu.getStat_name();
+//        return "admin/productlist/"+nomStatut;
+        return "admin/ProductListSimple";
+    }
 
     @GetMapping("/productlist")
     public String listProducts(Model model) {

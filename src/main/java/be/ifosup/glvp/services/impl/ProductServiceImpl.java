@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public ProductDTO create(ProductForm productForm) {
+    public void create(ProductForm productForm) {
 
 
         Product entity = Product.builder()
@@ -60,11 +60,12 @@ public class ProductServiceImpl implements ProductService {
                 .build();
         System.out.println(entity);
         Product product = productRepository.save(entity);
-        return ToModel.getProductFromEntity(product);
     }
 
+
+
     @Override
-    public ProductDTO update(ProductForm productForm) {
+    public void update(ProductForm productForm) {
         Product entity = Product.builder()
                 .id(productForm.getId())
                 .product(productForm.getProductname())
@@ -76,7 +77,6 @@ public class ProductServiceImpl implements ProductService {
                 .quantities(productForm.getQuantities())
                 .build();
         Product product = productRepository.save(entity);
-        return ToModel.getProductFromEntity(product);
     }
 
     @Override
@@ -88,6 +88,15 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    @Override
+    public void reduction (ProductForm productForm, int reduction){
+
+    }
+
+    @Override
+    public void ajusterPrix (ProductForm productForm){
+
+    }
 
     @Override
     public ProductDTO getById(long id) {

@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="static/header.html :: head">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<h1>Admin page</h1>
+<h2><a  th:text="${statu.stat_name}"></a></h2>
+
+
+<div class="blur2"></div>
+<div class="containers">
+    <div class="navbar" th:replace="static/adminnavbar.html :: navbar"></div>
+
+<table class="table table-bordered table-striped table-sm" th:fragment="ProductListSimple">
+    <thead class="thead-dark">
+    <tr>
+        <th class="col-login">Product Name</th>
+        <th class="col-last-name">Mise en Rayon</th>
+        <th class="col-first-name">Péremption</th>
+        <th class="col-first-name">Prix</th>
+        <th class="col-first-name">Catégorie</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.productname}"></td>
+        <td style="display:none" th:text="${product.productname}"></td>
+        <td th:text="${product.rayon}"></td>
+        <td style="display:none" th:text="${product.rayon}"></td>
+        <td th:text="${product.peremption}"></td>
+        <td style="display:none" th:text="${product.peremption}"></td>
+        <td th:text="${product.price}"></td>
+        <td style="display:none" th:text="${product.price}"></td>
+        <td th:text="${product.id_subfk.sub_name}"></td>
+        <td style="display:none" th:text="${product.id_subfk.sub_name}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

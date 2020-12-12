@@ -36,7 +36,7 @@ public class UsersServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO create(UserForm userform) {
+    public void create(UserForm userform) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodePassword = bCryptPasswordEncoder.encode(userform.getPassword());
         List<RoleEnum> roleEnums = new ArrayList<>();
@@ -53,7 +53,6 @@ public class UsersServiceImpl implements UserService {
                 .credentialsNonExpired(true)
                 .build();
         User user = userRepository.save(entity);
-        return ToModel.getUserFromEntity(user);
 
     }
 
