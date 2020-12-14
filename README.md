@@ -4,4 +4,4 @@
 
 * Genicot Jerome
 * Levis Maxime
-* Vanserveren Alexandre
+* Vanseveren Alexandre
