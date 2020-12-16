@@ -56,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(productForm.getPrice())
                 .quantities(productForm.getQuantities())
                 .build();
-        System.out.println(entity);
+//        System.out.println(entity);
         Product product = productRepository.save(entity);
     }
 
@@ -119,7 +119,6 @@ public class ProductServiceImpl implements ProductService {
                 .price(product.getPrice())
                 .quantities(product.getQuantities())
                 .build();
-
         return productDTO;
     }
     @Override

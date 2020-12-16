@@ -153,8 +153,8 @@ $('.saveprod').on('click',function (event) {
             }
         })
     }
-
 });
+
 
 $('.cancel').on('click',function (event) {
     event.preventDefault();
