@@ -121,6 +121,7 @@ public class ProductServiceImpl implements ProductService {
                 .build();
         return productDTO;
     }
+
     @Override
     public Set<ProductDTO>getByCategory(long id){
         Set<Product> entities = new HashSet<>(productRepository.findAllById_subfk(id));

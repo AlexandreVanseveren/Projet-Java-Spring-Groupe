@@ -15,7 +15,6 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductForm implements Serializable {
-
     private Long id;
     private String productname;
     private Date rayon;
@@ -24,5 +23,4 @@ public class ProductForm implements Serializable {
     private Long id_statfk;
     private Float price;
     private Integer quantities;
-
 }
